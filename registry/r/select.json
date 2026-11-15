@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select",
+  "type": "registry:ui",
+  "title": "Select",
+  "description": "Dropdown select over label/value options with placeholder and disabled state. Built on Base UI.",
+  "dependencies": [
+    "@base-ui/react",
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "packages/web/src/components/select/Select.tsx",
+      "content": "import { Select as BaseSelect } from \"@base-ui/react/select\";\nimport { Check, ChevronDown } from \"lucide-react\";\n\nexport interface SelectOption {\n  label: string;\n  value: string;\n}\n\nexport interface SelectProps {\n  options: SelectOption[];\n  value: string | null;\n  onValueChange: (value: string) => void;\n  placeholder?: string;\n  label?: string;\n  disabled?: boolean;\n}\n\n/**\n * Select. Options are `{ label, value }` objects — do not pass children\n * as options. The trigger carries `aria-label` from `label` (or the\n * placeholder) so its state is exposed to assistive tech.\n */\nexport function Select({\n  options,\n  value,\n  onValueChange,\n  placeholder,\n  label,\n  disabled,\n}: SelectProps) {\n  // Items carry the whole `{ label, value }` option object, so the trigger\n  // can show the selected label without the list ever having opened\n  // (Base UI resolves an object-valued item's label automatically).\n  const selectedOption = options.find((option) => option.value === value) ?? null;\n\n  return (\n    <div className=\"flex w-full flex-col gap-1\">\n      {label ? (\n        <span className=\"text-sm font-medium text-text\">{label}</span>\n      ) : null}\n      <BaseSelect.Root\n        value={selectedOption}\n        onValueChange={(nextValue) => {\n          const option = nextValue as SelectOption | null;\n          if (option) {\n            onValueChange(option.value);\n          }\n        }}\n        disabled={disabled}\n      >\n        <BaseSelect.Trigger\n          aria-label={label ?? placeholder ?? \"Select an option\"}\n          className=\"flex h-10 w-full items-center justify-between gap-2 rounded-rounded border border-border bg-surface px-3 text-sm text-text transition-colors duration-fast hover:border-border-strong focus-visible:outline-2 focus-visible:outline-focus disabled:pointer-events-none disabled:opacity-50 data-[placeholder]:text-text-muted\"\n        >\n          <BaseSelect.Value placeholder={placeholder} />\n          <BaseSelect.Icon>\n            <ChevronDown className=\"size-4 text-text-muted\" aria-hidden=\"true\" />\n          </BaseSelect.Icon>\n        </BaseSelect.Trigger>\n        <BaseSelect.Portal>\n          <BaseSelect.Positioner className=\"z-50\">\n            <BaseSelect.Popup className=\"w-[var(--anchor-width)] rounded-rounded border border-border bg-surface-raised p-1 text-sm text-text\">\n              {options.map((option) => (\n                <BaseSelect.Item\n                  key={option.value}\n                  value={option}\n                  className=\"flex cursor-default items-center justify-between gap-2 rounded-rounded px-3 py-2 transition-colors duration-fast hover:bg-surface focus-visible:outline-2 focus-visible:outline-focus data-[selected]:bg-surface\"\n                >\n                  <BaseSelect.ItemText>{option.label}</BaseSelect.ItemText>\n                  <BaseSelect.ItemIndicator>\n                    <Check className=\"size-4 text-brand\" aria-hidden=\"true\" />\n                  </BaseSelect.ItemIndicator>\n                </BaseSelect.Item>\n              ))}\n            </BaseSelect.Popup>\n          </BaseSelect.Positioner>\n        </BaseSelect.Portal>\n      </BaseSelect.Root>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/select.tsx"
+    }
+  ]
+}

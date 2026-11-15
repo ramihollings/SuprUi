@@ -1,0 +1,15 @@
+# 02 — Button: open the showcase, tap Primary, the press count goes 0 -> 1.
+appId: ${APP_ID}
+name: Button screen interaction
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "nav-button"
+- assertVisible:
+    id: "screen-button"
+- assertVisible: "Pressed 0 times"
+- tapOn: "Primary"
+- assertVisible: "Pressed 1 time"
+- tapOn:
+    id: "nav-back"

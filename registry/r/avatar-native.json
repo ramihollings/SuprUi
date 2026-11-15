@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-native",
+  "type": "registry:ui",
+  "title": "Avatar",
+  "description": "User avatar with image source, text fallback, and sm, md, and lg sizes. Built on React Native Reusables primitives.",
+  "dependencies": [
+    "@rn-primitives/avatar"
+  ],
+  "registryDependencies": [
+    "theme-native"
+  ],
+  "files": [
+    {
+      "path": "packages/native/src/components/avatar/Avatar.tsx",
+      "content": "/**\n * Avatar — Supr UI native, built on `@rn-primitives/avatar`.\n *\n * `fallback` (usually initials) shows when `src` is absent or fails to\n * load; the primitive tracks the image load status and swaps the\n * fallback in on error. Sizes from the spacing token: 32 / 40 / 64.\n * Circular radius token for the frame.\n */\nimport { Text } from 'react-native';\nimport * as AvatarPrimitive from '@rn-primitives/avatar';\nimport { fontWeight, useTheme } from '../../lib/theme';\n\nexport type AvatarSize = 'sm' | 'md' | 'lg';\n\nexport interface AvatarProps {\n  src?: string;\n  fallback: string;\n  size?: AvatarSize;\n  alt: string;\n}\n\nexport function Avatar({ src, fallback, size = 'md', alt }: AvatarProps) {\n  const t = useTheme();\n  const dimension =\n    size === 'sm' ? t.spacing[8] : size === 'lg' ? t.spacing[16] : t.spacing[10];\n  const fontSize =\n    size === 'sm'\n      ? t.typography.sizes.xs\n      : size === 'lg'\n        ? t.typography.sizes.lg\n        : t.typography.sizes.base;\n\n  return (\n    <AvatarPrimitive.Root\n      alt={alt}\n      style={{\n        width: dimension,\n        height: dimension,\n        borderRadius: t.radii.circular,\n        backgroundColor: t.colors.surfaceRaised,\n        borderWidth: t.borderWidth.thin,\n        borderColor: t.colors.border,\n        overflow: 'hidden',\n        alignItems: 'center',\n        justifyContent: 'center',\n      }}\n    >\n      {src ? (\n        <AvatarPrimitive.Image\n          source={{ uri: src }}\n          style={{ width: dimension, height: dimension }}\n        />\n      ) : null}\n      <AvatarPrimitive.Fallback\n        style={{\n          position: 'absolute',\n          top: 0,\n          bottom: 0,\n          left: 0,\n          right: 0,\n          alignItems: 'center',\n          justifyContent: 'center',\n        }}\n      >\n        <Text\n          style={{\n            color: t.colors.text,\n            fontSize: fontSize.fontSize,\n            lineHeight: fontSize.lineHeight,\n            fontWeight: fontWeight(t, 'semibold'),\n          }}\n        >\n          {fallback}\n        </Text>\n      </AvatarPrimitive.Fallback>\n    </AvatarPrimitive.Root>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/avatar-native.tsx"
+    }
+  ],
+  "platform": "react-native"
+}

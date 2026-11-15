@@ -1,0 +1,29 @@
+{
+    "$metadata": {
+        "tokenSetOrder": [
+            "radius"
+        ]
+    },
+    "radius": {
+        "circular": {
+            "$description": "Avatars and pills only.",
+            "$type": "dimension",
+            "$value": "9999px"
+        },
+        "extra-rounded": {
+            "$description": "Cards and panels.",
+            "$type": "dimension",
+            "$value": "16px"
+        },
+        "rounded": {
+            "$description": "Default control radius.",
+            "$type": "dimension",
+            "$value": "8px"
+        },
+        "sharp": {
+            "$description": "Flush / dense surfaces.",
+            "$type": "dimension",
+            "$value": "0px"
+        }
+    }
+}

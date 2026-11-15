@@ -1,0 +1,16 @@
+# 03 — Select: open the showcase, change the value from Cobalt to Black.
+appId: ${APP_ID}
+name: Select screen interaction
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "nav-select"
+- assertVisible:
+    id: "screen-select"
+- assertVisible: "Selected: Cobalt"
+- tapOn: "Cobalt"
+- tapOn: "Black"
+- assertVisible: "Selected: Black"
+- tapOn:
+    id: "nav-back"

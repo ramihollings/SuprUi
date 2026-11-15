@@ -1,0 +1,104 @@
+{
+    "$metadata": {
+        "tokenSetOrder": [
+            "typography"
+        ]
+    },
+    "typography": {
+        "fontFamily": {
+            "$description": "System stack \u2014 no webfont dependency.",
+            "$type": "fontFamily",
+            "$value": "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+        },
+        "size": {
+            "2xl": {
+                "fontSize": {
+                    "$type": "dimension",
+                    "$value": "24px"
+                },
+                "lineHeight": {
+                    "$type": "dimension",
+                    "$value": "32px"
+                }
+            },
+            "3xl": {
+                "fontSize": {
+                    "$type": "dimension",
+                    "$value": "30px"
+                },
+                "lineHeight": {
+                    "$type": "dimension",
+                    "$value": "36px"
+                }
+            },
+            "base": {
+                "fontSize": {
+                    "$type": "dimension",
+                    "$value": "16px"
+                },
+                "lineHeight": {
+                    "$type": "dimension",
+                    "$value": "24px"
+                }
+            },
+            "lg": {
+                "fontSize": {
+                    "$type": "dimension",
+                    "$value": "18px"
+                },
+                "lineHeight": {
+                    "$type": "dimension",
+                    "$value": "28px"
+                }
+            },
+            "sm": {
+                "fontSize": {
+                    "$type": "dimension",
+                    "$value": "14px"
+                },
+                "lineHeight": {
+                    "$type": "dimension",
+                    "$value": "20px"
+                }
+            },
+            "xl": {
+                "fontSize": {
+                    "$type": "dimension",
+                    "$value": "20px"
+                },
+                "lineHeight": {
+                    "$type": "dimension",
+                    "$value": "28px"
+                }
+            },
+            "xs": {
+                "fontSize": {
+                    "$type": "dimension",
+                    "$value": "12px"
+                },
+                "lineHeight": {
+                    "$type": "dimension",
+                    "$value": "16px"
+                }
+            }
+        },
+        "weight": {
+            "bold": {
+                "$type": "fontWeight",
+                "$value": 700
+            },
+            "medium": {
+                "$type": "fontWeight",
+                "$value": 500
+            },
+            "regular": {
+                "$type": "fontWeight",
+                "$value": 400
+            },
+            "semibold": {
+                "$type": "fontWeight",
+                "$value": 600
+            }
+        }
+    }
+}

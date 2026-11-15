@@ -1,0 +1,24 @@
+{
+    "$metadata": {
+        "tokenSetOrder": [
+            "border"
+        ]
+    },
+    "border": {
+        "width": {
+            "fat": {
+                "$type": "dimension",
+                "$value": "2px"
+            },
+            "none": {
+                "$type": "dimension",
+                "$value": "0px"
+            },
+            "thin": {
+                "$description": "Default hairline width; pair with --color-border.",
+                "$type": "dimension",
+                "$value": "1px"
+            }
+        }
+    }
+}

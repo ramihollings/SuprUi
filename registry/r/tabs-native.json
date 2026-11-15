@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-native",
+  "type": "registry:ui",
+  "title": "Tabs",
+  "description": "Compound tabs (Tabs, TabsList, TabsTrigger, TabsContent) with controlled value. Built on React Native Reusables primitives.",
+  "dependencies": [
+    "@rn-primitives/tabs"
+  ],
+  "registryDependencies": [
+    "theme-native"
+  ],
+  "files": [
+    {
+      "path": "packages/native/src/components/tabs/Tabs.tsx",
+      "content": "/**\n * Tabs — Supr UI native, built on `@rn-primitives/tabs`.\n *\n * Compound: `Tabs` (controlled `value` / `onValueChange`), `TabsList`,\n * `TabsTrigger` (`value`), `TabsContent` (`value`). The active trigger\n * reads the root value through the primitive's context (the wrapper\n * sits inside `Root`, so `useRootContext()` works there) and swaps to\n * the raised-surface token; there is no sliding indicator in M1, so no\n * spring is consumed here (the snappy token spring is reserved for\n * controls that move: Switch thumb, Dialog/Popover scale).\n */\nimport type { ReactNode } from 'react';\nimport { Text, View } from 'react-native';\nimport * as TabsPrimitive from '@rn-primitives/tabs';\nimport { fontWeight, useTheme } from '../../lib/theme';\n\nexport interface TabsProps {\n  value: string;\n  onValueChange: (value: string) => void;\n  children: ReactNode;\n}\n\nexport function Tabs({ value, onValueChange, children }: TabsProps) {\n  return (\n    <TabsPrimitive.Root value={value} onValueChange={onValueChange}>\n      {children}\n    </TabsPrimitive.Root>\n  );\n}\n\nexport function TabsList({ children }: { children: ReactNode }) {\n  const t = useTheme();\n  return (\n    <TabsPrimitive.List\n      style={{\n        flexDirection: 'row',\n        gap: t.spacing[1],\n        backgroundColor: t.colors.surface,\n        borderRadius: t.radii.rounded,\n        borderWidth: t.borderWidth.thin,\n        borderColor: t.colors.border,\n        padding: t.spacing[1],\n      }}\n    >\n      {children}\n    </TabsPrimitive.List>\n  );\n}\n\nexport function TabsTrigger({\n  value,\n  children,\n}: {\n  value: string;\n  children: ReactNode;\n}) {\n  const t = useTheme();\n  const { value: selected } = TabsPrimitive.useRootContext();\n  const active = selected === value;\n  return (\n    <TabsPrimitive.Trigger\n      value={value}\n      style={{\n        flex: 1,\n        alignItems: 'center',\n        justifyContent: 'center',\n        paddingHorizontal: t.spacing[3],\n        paddingVertical: t.spacing[2],\n        borderRadius: t.radii.rounded,\n        backgroundColor: active ? t.colors.surfaceRaised : 'transparent',\n      }}\n    >\n      {typeof children === 'string' ? (\n        <Text\n          style={{\n            color: active ? t.colors.text : t.colors.textMuted,\n            fontSize: t.typography.sizes.sm.fontSize,\n            lineHeight: t.typography.sizes.sm.lineHeight,\n            fontWeight: active ? fontWeight(t, 'semibold') : fontWeight(t, 'medium'),\n          }}\n        >\n          {children}\n        </Text>\n      ) : (\n        children\n      )}\n    </TabsPrimitive.Trigger>\n  );\n}\n\nexport function TabsContent({\n  value,\n  children,\n}: {\n  value: string;\n  children: ReactNode;\n}) {\n  const t = useTheme();\n  return (\n    <TabsPrimitive.Content value={value} style={{ paddingTop: t.spacing[3] }}>\n      {children}\n    </TabsPrimitive.Content>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/tabs-native.tsx"
+    }
+  ],
+  "platform": "react-native"
+}

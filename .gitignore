@@ -1,0 +1,12 @@
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+.storybook-out/
+# Built Storybook output — regenerable via `npm run build-storybook --workspace=@mrtechnology/storybook`; do not commit (D14).
+apps/storybook/storybook-static/
+.DS_Store
+apps/storybook/test-results/
+
+# Astro build cache — regenerable
+apps/docs/.astro/

@@ -1,0 +1,17 @@
+# 04 — Switch: open the showcase, toggle off -> on -> off.
+appId: ${APP_ID}
+name: Switch screen interaction
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "nav-switch"
+- assertVisible:
+    id: "screen-switch"
+- assertVisible: "Email notifications: Off"
+- tapOn: "Email notifications"
+- assertVisible: "Email notifications: On"
+- tapOn: "Email notifications"
+- assertVisible: "Email notifications: Off"
+- tapOn:
+    id: "nav-back"

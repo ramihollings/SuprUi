@@ -1,0 +1,14 @@
+{
+  "description": "Supr UI Figma plugin — syncs the W3C tokens in tokens/*.json into Figma Variables (and Tokens Studio). Zero dependencies; plain Node >= 20.",
+  "license": "MIT",
+  "name": "@mrtechnology/figma-plugin",
+  "private": true,
+  "scripts": {
+    "apply:rest": "node scripts/apply-rest.mjs",
+    "sync": "node scripts/sync-tokens.mjs",
+    "test": "npm run sync && npm run verify",
+    "verify": "node scripts/verify-sync.mjs"
+  },
+  "type": "module",
+  "version": "0.1.0"
+}

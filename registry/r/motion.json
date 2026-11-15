@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion",
+  "type": "registry:lib",
+  "title": "Motion values",
+  "description": "Motion durations, easing, and spring configs for the Motion runtime, mirroring the motion tokens. Required by dialog, popover, switch, and toast.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "packages/web/src/lib/motion.ts",
+      "content": "/**\n * Motion values for the Motion runtime, mirroring the token source of truth\n * (`tokens/motion.json`, built into `@mrtechnology/tokens`). Durations are seconds\n * here because Motion takes seconds; the values are the token values\n * (120ms / 200ms / 320ms). Kept in sync by `src/lib/motion.test.ts` —\n * do not change a value here without changing the token.\n */\nexport const motionDurations = {\n  /** Token `motion.duration.fast` — 120ms. Hover / micro-feedback. */\n  fast: 0.12,\n  /** Token `motion.duration.base` — 200ms. Default transition. */\n  base: 0.2,\n  /** Token `motion.duration.slow` — 320ms. Larger transitions (dialog/popover enter). */\n  slow: 0.32,\n} as const;\n\n/** Token `motion.easing.ease-out` — cubic-bezier(0.22, 1, 0.36, 1). */\nexport const motionEaseOut = [0.22, 1, 0.36, 1] as const;\n\n/** Token `motion.spring.gentle` — stiffness 260, damping 26. */\nexport const motionSpringGentle = { stiffness: 260, damping: 26 } as const;\n\n/** Token `motion.spring.snappy` — stiffness 400, damping 30. */\nexport const motionSpringSnappy = { stiffness: 400, damping: 30 } as const;\n",
+      "type": "registry:lib",
+      "target": "lib/motion.ts"
+    }
+  ]
+}

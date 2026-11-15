@@ -1,0 +1,27 @@
+Supr UI — Third-Party Notices
+================================
+
+Supr UI itself is licensed under the MIT License (see LICENSE).
+This file credits the upstream projects Supr UI builds on, borrows from,
+or takes inspiration from, with their licenses as recorded in
+decisions.md. Licenses are stated as recorded there; do not rely on this
+file as a substitute for each project's own LICENSE file.
+
+- shadcn/ui — MIT — Web component base: copy-paste components, registry distribution model.
+- Base UI — MIT — Web behavior/headless primitives (keyboard, focus, ARIA) under the web components.
+- Radix UI primitives — MIT — Fallback headless primitives if Base UI ever wobbles (D3 fallback).
+- Tailwind CSS — MIT — Styling engine (Tailwind v4, CSS-first with `@theme` tokens) on web; NativeWind is Tailwind on Android.
+- Style Dictionary — Apache 2.0 — Token build system: one W3C-format token source to CSS variables, native, and JS.
+- Tokens Studio — MIT — Figma editor for the W3C-format tokens.
+- Lucide — ISC AND MIT — Icons on web (`lucide-react` 1.72.0) and Android (`lucide-react-native` 1.72.0). ISC verified 2026-11-13 from the LICENSE file in both published packages (identical files) and the lucide-icons/lucide repo (main): "ISC License — Copyright (c) 2026 Lucide Icons and Contributors — Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies." The 115 Feather-derived icons named in that file remain under the MIT License (Copyright (c) 2013-present Cole Bemis), so the correct SPDX expression is ISC AND MIT. GitHub's license API still reports the repo as unclassified — the LICENSE file itself is the authority.
+- Motion — MIT — Motion runtime on web (springs, layout transitions, gestures); motion values shared as tokens.
+- React Native Reanimated — MIT — Motion runtime on Android; executes the shared motion tokens natively.
+- React Native Reusables — MIT — Android component base: shadcn/ui ported to React Native (NativeWind), including its RN behavior primitives.
+- NativeWind — MIT — Tailwind classes in React Native; the Android styling layer.
+- Storybook — MIT — Component workshop, with the a11y addon running axe in stories.
+- Vitest — MIT — Unit and component tests.
+- Playwright — Apache 2.0 — Interaction and visual-regression tests across browsers (web-only).
+- axe-core — MPL-2.0 — Automated accessibility checks; the CI a11y gate.
+- Carbon — Apache 2.0 — Inspiration: token-package rigor, a11y-first governance, and the Carbon MCP server as the reference for the agent interface.
+- Kumo — MIT — Patterns borrowed, not components: semantic tokens, CLI, Figma sync, and AGENTS.md + skill.
+- vercel-labs/ui (UI SDK) — Apache 2.0 — Headless behaviors (keyboard, focus, ARIA) and agent skill as the agent-facing behavior spec (beta; see decisions.md).

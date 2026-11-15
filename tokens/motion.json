@@ -1,0 +1,55 @@
+{
+    "$metadata": {
+        "tokenSetOrder": [
+            "motion"
+        ]
+    },
+    "motion": {
+        "duration": {
+            "base": {
+                "$description": "Default duration.",
+                "$type": "duration",
+                "$value": "200ms"
+            },
+            "fast": {
+                "$description": "Hover / micro-feedback.",
+                "$type": "duration",
+                "$value": "120ms"
+            },
+            "slow": {
+                "$description": "Larger transitions (dialog / popover enter).",
+                "$type": "duration",
+                "$value": "320ms"
+            }
+        },
+        "easing": {
+            "ease-out": {
+                "$description": "Default easing unless a spring is specified.",
+                "$type": "cubicBezier",
+                "$value": "cubic-bezier(0.22, 1, 0.36, 1)"
+            }
+        },
+        "spring": {
+            "gentle": {
+                "damping": {
+                    "$type": "number",
+                    "$value": 26
+                },
+                "stiffness": {
+                    "$type": "number",
+                    "$value": 260
+                }
+            },
+            "snappy": {
+                "damping": {
+                    "$type": "number",
+                    "$value": 30
+                },
+                "stiffness": {
+                    "$type": "number",
+                    "$value": 400
+                }
+            }
+        }
+    }
+}

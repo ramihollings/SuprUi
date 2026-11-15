@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "type": "registry:ui",
+  "title": "Input",
+  "description": "Text input with optional label and error state.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "packages/web/src/components/input/Input.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\";\nimport { useId, type InputHTMLAttributes } from \"react\";\nimport { cn } from \"../../lib/utils\";\n\nconst inputVariants = cva(\n  \"w-full rounded-rounded border border-border bg-surface text-text placeholder:text-text-muted focus-visible:outline-2 focus-visible:outline-focus disabled:pointer-events-none disabled:opacity-50 aria-[invalid=true]:border-danger\",\n  {\n    variants: {\n      size: {\n        sm: \"h-8 px-3 text-sm\",\n        md: \"h-10 px-3 text-sm\",\n        lg: \"h-12 px-4 text-base\",\n      },\n    },\n    defaultVariants: {\n      size: \"md\",\n    },\n  },\n);\n\nexport interface InputProps\n  extends Omit<InputHTMLAttributes<HTMLInputElement>, \"size\" | \"onChange\">,\n    VariantProps<typeof inputVariants> {\n  label?: string;\n  value: string;\n  onChange: (value: string) => void;\n  /** Error message; renders the error state and exposes it to assistive tech. */\n  error?: string;\n}\n\nexport function Input({\n  label,\n  placeholder,\n  value,\n  onChange,\n  error,\n  disabled,\n  size,\n  className,\n  id,\n  ...props\n}: InputProps) {\n  const generatedId = useId();\n  const inputId = id ?? generatedId;\n  const errorId = `${inputId}-error`;\n\n  return (\n    <div className=\"flex w-full flex-col gap-1\">\n      {label ? (\n        <label htmlFor={inputId} className=\"text-sm font-medium text-text\">\n          {label}\n        </label>\n      ) : null}\n      <input\n        id={inputId}\n        className={cn(inputVariants({ size }), className)}\n        placeholder={placeholder}\n        value={value}\n        onChange={(event) => onChange(event.target.value)}\n        disabled={disabled}\n        aria-invalid={error ? true : undefined}\n        aria-describedby={error ? errorId : undefined}\n        {...props}\n      />\n      {error ? (\n        <p id={errorId} role=\"alert\" className=\"text-sm text-danger\">\n          {error}\n        </p>\n      ) : null}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/input.tsx"
+    }
+  ]
+}

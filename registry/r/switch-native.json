@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-native",
+  "type": "registry:ui",
+  "title": "Switch",
+  "description": "Toggle switch with optional label and disabled state. Built on React Native Reusables primitives.",
+  "dependencies": [
+    "@rn-primitives/switch",
+    "react-native-reanimated"
+  ],
+  "registryDependencies": [
+    "theme-native"
+  ],
+  "files": [
+    {
+      "path": "packages/native/src/components/switch/Switch.tsx",
+      "content": "/**\n * Switch — Supr UI native, built on `@rn-primitives/switch`.\n *\n * Controlled via `checked` / `onCheckedChange`. The thumb slides on\n * the snappy token spring (stiffness 400, damping 30 — \"responsive\n * controls\" per the repo motion rules); the track swaps to the brand\n * token when checked. State is exposed to assistive technology through\n * the primitive's `switch` role and `accessibilityState`.\n */\nimport { useEffect } from 'react';\nimport { Text, View } from 'react-native';\nimport Animated, {\n  useAnimatedStyle,\n  useSharedValue,\n  withSpring,\n} from 'react-native-reanimated';\nimport * as SwitchPrimitive from '@rn-primitives/switch';\nimport { useTheme } from '../../lib/theme';\n\nexport interface SwitchProps {\n  checked: boolean;\n  onCheckedChange: (checked: boolean) => void;\n  label?: string;\n  disabled?: boolean;\n}\n\nexport function Switch({\n  checked,\n  onCheckedChange,\n  label,\n  disabled = false,\n}: SwitchProps) {\n  const t = useTheme();\n\n  // Track 48 x 24, thumb 20: all steps of the spacing token.\n  const trackWidth = t.spacing[12];\n  const trackHeight = t.spacing[6];\n  const thumbSize = t.spacing[5];\n  const thumbTravel = trackWidth - thumbSize - t.spacing[1];\n\n  const position = useSharedValue(checked ? 1 : 0);\n\n  // Thumb travel on the snappy token spring. (In tests the Reanimated\n  // mock resolves withSpring to its target synchronously.)\n  useEffect(() => {\n    position.value = withSpring(checked ? 1 : 0, {\n      stiffness: t.motion.springSnappy.stiffness,\n      damping: t.motion.springSnappy.damping,\n    });\n  }, [checked, position, t.motion.springSnappy.stiffness, t.motion.springSnappy.damping]);\n\n  const thumbStyle = useAnimatedStyle(() => ({\n    transform: [{ translateX: position.value * thumbTravel }],\n  }));\n\n  return (\n    <View\n      style={{\n        flexDirection: 'row',\n        alignItems: 'center',\n        gap: t.spacing[2],\n        opacity: disabled ? 0.5 : 1,\n      }}\n    >\n      <SwitchPrimitive.Root\n        checked={checked}\n        onCheckedChange={onCheckedChange}\n        disabled={disabled}\n        style={{\n          width: trackWidth,\n          height: trackHeight,\n          borderRadius: t.radii.circular,\n          // Unchecked track is the track token (#737373): its boundary vs\n          // the page is 4.43:1 dark / 4.74:1 light (WCAG 1.4.11 needs 3:1);\n          // the old border-strong track was 2.03:1 dark / 1.48:1 light, and\n          // the white thumb on the light track was 1.48:1. No border: the\n          // fill itself is the control boundary, and a border-strong rim\n          // would fail 3:1 against the page in both themes.\n          backgroundColor: checked ? t.colors.brand : t.colors.track,\n          borderWidth: t.borderWidth.none,\n          justifyContent: 'center',\n          paddingHorizontal: t.spacing[1] / 2,\n        }}\n      >\n        {/* asChild: the thumb's animated style needs an Animated host. */}\n        <SwitchPrimitive.Thumb asChild>\n          <Animated.View\n            style={[\n              {\n                width: thumbSize,\n                height: thumbSize,\n                borderRadius: t.radii.circular,\n                backgroundColor: t.colors.brandForeground,\n              },\n              thumbStyle,\n            ]}\n          />\n        </SwitchPrimitive.Thumb>\n      </SwitchPrimitive.Root>\n      {label ? (\n        <Text\n          style={{\n            color: t.colors.text,\n            fontSize: t.typography.sizes.base.fontSize,\n            lineHeight: t.typography.sizes.base.lineHeight,\n          }}\n        >\n          {label}\n        </Text>\n      ) : null}\n    </View>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/switch-native.tsx"
+    }
+  ],
+  "platform": "react-native"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "type": "registry:ui",
+  "title": "Popover",
+  "description": "Floating panel anchored to a trigger, with side and align placement. Built on Base UI.",
+  "dependencies": [
+    "@base-ui/react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "packages/web/src/components/popover/Popover.tsx",
+      "content": "import { Popover as BasePopover } from \"@base-ui/react/popover\";\nimport { motion } from \"motion/react\";\nimport { isValidElement, type ReactElement, type ReactNode } from \"react\";\nimport { motionDurations, motionEaseOut } from \"../../lib/motion\";\n\nexport interface PopoverProps {\n  trigger: ReactNode;\n  content: ReactNode;\n  open: boolean;\n  onOpenChange: (open: boolean) => void;\n  side?: \"top\" | \"bottom\" | \"left\" | \"right\";\n  align?: \"start\" | \"center\" | \"end\";\n}\n\n/**\n * Popover. Controlled via `open` / `onOpenChange`. The trigger must be an\n * element (a Button is the usual choice); plain text is wrapped in a span.\n * Enter transition uses the token slow duration (320ms) via Motion.\n */\nexport function Popover({\n  trigger,\n  content,\n  open,\n  onOpenChange,\n  side = \"bottom\",\n  align = \"center\",\n}: PopoverProps) {\n  const triggerElement: ReactElement = isValidElement(trigger) ? (\n    trigger\n  ) : (\n    <span>{trigger}</span>\n  );\n\n  return (\n    <BasePopover.Root open={open} onOpenChange={onOpenChange}>\n      <BasePopover.Trigger render={triggerElement} />\n      <BasePopover.Portal>\n        <BasePopover.Positioner side={side} align={align} className=\"z-50\">\n          <BasePopover.Popup\n            aria-label=\"Popover\"\n            render={\n              <motion.div\n                initial={{ opacity: 0, scale: 0.96 }}\n                animate={{ opacity: 1, scale: 1 }}\n                transition={{ duration: motionDurations.slow, ease: motionEaseOut }}\n              />\n            }\n            className=\"rounded-extra-rounded border border-border bg-surface-raised p-4 text-sm text-text\"\n          >\n            {content}\n          </BasePopover.Popup>\n        </BasePopover.Positioner>\n      </BasePopover.Portal>\n    </BasePopover.Root>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/popover.tsx"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"compilerOptions":{"noEmit":true,"typeRoots":["../../node_modules/@types"],"types":["node"]},"extends":"../../tsconfig.base.json","include":["dist/native/theme.ts","test/**/*.ts"]}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog",
+  "type": "registry:ui",
+  "title": "Dialog",
+  "description": "Modal dialog with title, description, content, and actions. Built on Base UI.",
+  "dependencies": [
+    "@base-ui/react",
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "packages/web/src/components/dialog/Dialog.tsx",
+      "content": "import { Dialog as BaseDialog } from \"@base-ui/react/dialog\";\nimport { X } from \"lucide-react\";\nimport { motion } from \"motion/react\";\nimport type { ReactNode } from \"react\";\nimport { motionDurations, motionEaseOut } from \"../../lib/motion\";\n\nexport interface DialogProps {\n  open: boolean;\n  onOpenChange: (open: boolean) => void;\n  title: string;\n  description?: string;\n  children: ReactNode;\n  /** Footer actions, e.g. a cancel + confirm Button pair. */\n  actions?: ReactNode;\n}\n\n/**\n * Dialog. Controlled via `open` / `onOpenChange`. Focus is trapped while\n * open and returned on close (Base UI). Enter transition uses the token\n * slow duration (320ms) via Motion.\n */\nexport function Dialog({\n  open,\n  onOpenChange,\n  title,\n  description,\n  children,\n  actions,\n}: DialogProps) {\n  return (\n    <BaseDialog.Root open={open} onOpenChange={onOpenChange}>\n      <BaseDialog.Portal>\n        <BaseDialog.Backdrop className=\"fixed inset-0 bg-background/70 transition-opacity duration-base data-[ending-style]:opacity-0 data-[starting-style]:opacity-0\" />\n        <BaseDialog.Popup\n          render={\n            <motion.div\n              initial={{ opacity: 0, scale: 0.96 }}\n              animate={{ opacity: 1, scale: 1 }}\n              transition={{ duration: motionDurations.slow, ease: motionEaseOut }}\n            />\n          }\n          className=\"fixed top-1/2 left-1/2 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-extra-rounded border border-border bg-surface-raised p-6 text-text\"\n        >\n          <div className=\"flex items-start justify-between gap-4\">\n            <div className=\"flex flex-col gap-1\">\n              <BaseDialog.Title className=\"text-lg font-semibold text-text\">\n                {title}\n              </BaseDialog.Title>\n              {description ? (\n                <BaseDialog.Description className=\"text-sm text-text-muted\">\n                  {description}\n                </BaseDialog.Description>\n              ) : null}\n            </div>\n            <BaseDialog.Close\n              aria-label=\"Close dialog\"\n              className=\"inline-flex size-8 shrink-0 items-center justify-center rounded-rounded text-text-muted transition-colors duration-fast hover:bg-surface hover:text-text focus-visible:outline-2 focus-visible:outline-focus\"\n            >\n              <X className=\"size-4\" aria-hidden=\"true\" />\n            </BaseDialog.Close>\n          </div>\n          <div className=\"mt-4 text-sm text-text\">{children}</div>\n          {actions ? (\n            <div className=\"mt-6 flex justify-end gap-2\">{actions}</div>\n          ) : null}\n        </BaseDialog.Popup>\n      </BaseDialog.Portal>\n    </BaseDialog.Root>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog.tsx"
+    }
+  ]
+}

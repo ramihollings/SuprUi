@@ -1,0 +1,1 @@
+{"$schema":"https://json.schemastore.org/tsconfig","compilerOptions":{"lib":["ES2022"],"noEmit":true,"typeRoots":["../../node_modules/@types"],"types":["node"]},"extends":"../../tsconfig.base.json","include":["src","test"]}

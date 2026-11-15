@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "type": "registry:ui",
+  "title": "Card",
+  "description": "Compound content card (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter).",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "packages/web/src/components/card/Card.tsx",
+      "content": "import type { HTMLAttributes, ReactNode } from \"react\";\nimport { cn } from \"../../lib/utils\";\n\ntype DivProps = HTMLAttributes<HTMLDivElement>;\n\n/** Compound Card. Use the named subcomponents, not ad-hoc divs. */\nexport function Card({ children, className, ...props }: DivProps) {\n  return (\n    <div\n      className={cn(\n        \"flex flex-col gap-4 rounded-extra-rounded border border-border bg-surface p-6 text-text\",\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </div>\n  );\n}\n\nexport function CardHeader({ children, className, ...props }: DivProps) {\n  return (\n    <div className={cn(\"flex flex-col gap-1\", className)} {...props}>\n      {children}\n    </div>\n  );\n}\n\nexport function CardTitle({\n  children,\n  className,\n  ...props\n}: DivProps & { children: ReactNode }) {\n  return (\n    <h3 className={cn(\"text-lg font-semibold text-text\", className)} {...props}>\n      {children}\n    </h3>\n  );\n}\n\nexport function CardDescription({ children, className, ...props }: DivProps) {\n  return (\n    <p className={cn(\"text-sm text-text-muted\", className)} {...props}>\n      {children}\n    </p>\n  );\n}\n\nexport function CardContent({ children, className, ...props }: DivProps) {\n  return (\n    <div className={cn(\"text-sm text-text\", className)} {...props}>\n      {children}\n    </div>\n  );\n}\n\nexport function CardFooter({ children, className, ...props }: DivProps) {\n  return (\n    <div className={cn(\"flex items-center gap-2\", className)} {...props}>\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/card.tsx"
+    }
+  ]
+}

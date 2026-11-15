@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-native",
+  "type": "registry:lib",
+  "title": "Native theme",
+  "description": "ThemeProvider, useTheme(), and the token theme re-export for React Native. Required by every native component; installed automatically as a registryDependency.",
+  "dependencies": [
+    "@mrtechnology/tokens"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "packages/native/src/theme.tsx",
+      "content": "/**\n * Supr UI native theme — re-exports the token theme and adds the\n * mode context components consume.\n *\n * Dark is the default. An app opts into light by rendering\n * `<ThemeProvider mode=\"light\">` once at its root; `useTheme()` then\n * returns `theme.light` instead of `theme.dark`. Components never swap\n * hex values themselves — they read `useTheme()` and style from tokens.\n */\nimport { createContext, useContext } from 'react';\nimport type { ReactNode } from 'react';\nimport { theme } from '@mrtechnology/tokens/native';\nimport type {\n  SuprTheme,\n  Theme,\n  ThemeBorderWidth,\n  ThemeColors,\n  ThemeMotion,\n  ThemeRadii,\n  ThemeSpacing,\n  ThemeSpring,\n  ThemeTypography,\n} from '@mrtechnology/tokens/native';\n\nexport { theme };\nexport type {\n  SuprTheme,\n  Theme,\n  ThemeBorderWidth,\n  ThemeColors,\n  ThemeMotion,\n  ThemeRadii,\n  ThemeSpacing,\n  ThemeSpring,\n  ThemeTypography,\n};\n\nexport type ThemeMode = 'dark' | 'light';\n\nconst ThemeModeContext = createContext<ThemeMode>('dark');\n\nexport function ThemeProvider({\n  mode = 'dark',\n  children,\n}: {\n  mode?: ThemeMode;\n  children: ReactNode;\n}) {\n  return (\n    <ThemeModeContext.Provider value={mode}>{children}</ThemeModeContext.Provider>\n  );\n}\n\n/** The active theme mode (`'dark'` by default). */\nexport function useThemeMode(): ThemeMode {\n  return useContext(ThemeModeContext);\n}\n\n/**\n * The active token theme: `theme.dark` by default, `theme.light` when the\n * app renders `<ThemeProvider mode=\"light\">`.\n */\nexport function useTheme(): SuprTheme {\n  return theme[useThemeMode()];\n}\n\n/**\n * React Native `fontWeight` for a token weight. The token stores the\n * numeric weight (400/500/600/700); RN's type wants the same value as a\n * string literal, so this maps through the token instead of hard-coding\n * the string.\n */\nexport function fontWeight(\n  t: SuprTheme,\n  w: keyof SuprTheme['typography']['weights'],\n): '400' | '500' | '600' | '700' {\n  const n = t.typography.weights[w];\n  if (n === 400) return '400';\n  if (n === 500) return '500';\n  if (n === 600) return '600';\n  if (n === 700) return '700';\n  throw new Error(`Unsupported token font weight: ${n}`);\n}\n",
+      "type": "registry:lib",
+      "target": "lib/theme.tsx"
+    }
+  ],
+  "platform": "react-native"
+}

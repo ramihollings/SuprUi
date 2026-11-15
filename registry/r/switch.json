@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "title": "Switch",
+  "description": "Toggle switch with optional label and disabled state. Built on Base UI.",
+  "dependencies": [
+    "@base-ui/react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "packages/web/src/components/switch/Switch.tsx",
+      "content": "import { Switch as BaseSwitch } from \"@base-ui/react/switch\";\nimport { useId } from \"react\";\nimport { motion } from \"motion/react\";\nimport { motionSpringSnappy } from \"../../lib/motion\";\nimport { cn } from \"../../lib/utils\";\n\nexport interface SwitchProps {\n  checked: boolean;\n  onCheckedChange: (checked: boolean) => void;\n  label?: string;\n  disabled?: boolean;\n}\n\n/**\n * Switch. State is exposed via the button's `aria-checked` (Base UI).\n * Thumb motion uses the token snappy spring.\n */\nexport function Switch({ checked, onCheckedChange, label, disabled }: SwitchProps) {\n  const id = useId();\n\n  const control = (\n    <BaseSwitch.Root\n      id={id}\n      checked={checked}\n      onCheckedChange={(nextChecked) => onCheckedChange(nextChecked)}\n      disabled={disabled}\n      className={cn(\n        // Unchecked track is the track token (#737373): its boundary vs\n        // the page is 4.43:1 dark / 4.74:1 light (WCAG 1.4.11 needs 3:1);\n        // the old surface track was 1.06:1 dark / 1.09:1 light. No border:\n        // the fill itself is the control boundary, and a border-strong rim\n        // would fail 3:1 against the page in both themes.\n        \"relative inline-flex h-6 w-11 shrink-0 items-center rounded-circular bg-track transition-colors duration-fast\",\n        \"data-[checked]:bg-brand\",\n        \"focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus disabled:pointer-events-none disabled:opacity-50\",\n      )}\n    >\n      <BaseSwitch.Thumb\n        render={\n          <motion.span\n            animate={{ x: checked ? 20 : 0 }}\n            transition={motionSpringSnappy}\n          />\n        }\n        className=\"ml-0.5 block size-5 rounded-circular bg-text\"\n      />\n    </BaseSwitch.Root>\n  );\n\n  if (!label) {\n    return control;\n  }\n\n  return (\n    <div className=\"flex items-center gap-2\">\n      {control}\n      <label htmlFor={id} className=\"cursor-pointer text-sm text-text\">\n        {label}\n      </label>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/switch.tsx"
+    }
+  ]
+}

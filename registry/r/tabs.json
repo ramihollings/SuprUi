@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "type": "registry:ui",
+  "title": "Tabs",
+  "description": "Compound tabs (Tabs, TabsList, TabsTrigger, TabsContent) with controlled value. Built on Base UI.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "packages/web/src/components/tabs/Tabs.tsx",
+      "content": "import { Tabs as BaseTabs } from \"@base-ui/react/tabs\";\nimport type { ReactNode } from \"react\";\nimport { cn } from \"../../lib/utils\";\n\nexport interface TabsProps {\n  value: string;\n  onValueChange: (value: string) => void;\n  children: ReactNode;\n  className?: string;\n}\n\n/** Compound Tabs. Arrow-key navigation is provided by Base UI. */\nexport function Tabs({ value, onValueChange, children, className }: TabsProps) {\n  return (\n    <BaseTabs.Root\n      value={value}\n      onValueChange={(nextValue) => onValueChange(nextValue as string)}\n      className={cn(\"flex flex-col gap-4\", className)}\n    >\n      {children}\n    </BaseTabs.Root>\n  );\n}\n\nexport function TabsList({\n  children,\n  className,\n}: {\n  children: ReactNode;\n  className?: string;\n}) {\n  return (\n    <BaseTabs.List className={cn(\"inline-flex items-center gap-1 self-start rounded-rounded border border-border bg-surface p-1\", className)}>\n      {children}\n    </BaseTabs.List>\n  );\n}\n\nexport function TabsTrigger({\n  value,\n  children,\n  className,\n}: {\n  value: string;\n  children: ReactNode;\n  className?: string;\n}) {\n  return (\n    <BaseTabs.Tab\n      value={value}\n      className={cn(\n        \"rounded-rounded px-3 py-1.5 text-sm font-medium text-text-muted transition-colors duration-fast hover:text-text focus-visible:outline-2 focus-visible:outline-focus data-[selected]:bg-surface-raised data-[selected]:text-text\",\n        className,\n      )}\n    >\n      {children}\n    </BaseTabs.Tab>\n  );\n}\n\nexport function TabsContent({\n  value,\n  children,\n  className,\n}: {\n  value: string;\n  children: ReactNode;\n  className?: string;\n}) {\n  return (\n    <BaseTabs.Panel value={value} className={cn(\"text-sm text-text\", className)}>\n      {children}\n    </BaseTabs.Panel>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/tabs.tsx"
+    }
+  ]
+}

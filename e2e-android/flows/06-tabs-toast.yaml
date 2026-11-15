@@ -1,0 +1,26 @@
+# 06 — Tabs + Toast: switch tabs, then fire the Success toast.
+appId: ${APP_ID}
+name: Tabs and Toast screen interactions
+---
+- launchApp:
+    clearState: true
+# Tabs
+- tapOn:
+    id: "nav-tabs"
+- assertVisible:
+    id: "screen-tabs"
+- assertVisible: "Active tab: overview"
+- tapOn: "Details"
+- assertVisible: "Details: members, activity, and storage."
+- assertVisible: "Active tab: details"
+- tapOn:
+    id: "nav-back"
+# Toast — assert immediately: toasts auto-dismiss.
+- tapOn:
+    id: "nav-toast"
+- assertVisible:
+    id: "screen-toast"
+- tapOn: "Success"
+- assertVisible: "Published"
+- tapOn:
+    id: "nav-back"

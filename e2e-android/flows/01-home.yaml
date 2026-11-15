@@ -1,0 +1,18 @@
+# 01 — Home: launch the demo app, assert all 10 components are listed.
+appId: ${APP_ID}
+name: Home lists all 10 components
+---
+- launchApp:
+    clearState: true
+- assertVisible:
+    id: "screen-home"
+- assertVisible: "Button"
+- assertVisible: "Input"
+- assertVisible: "Dialog"
+- assertVisible: "Popover"
+- assertVisible: "Select"
+- assertVisible: "Tabs"
+- assertVisible: "Toast"
+- assertVisible: "Card"
+- assertVisible: "Avatar"
+- assertVisible: "Switch"

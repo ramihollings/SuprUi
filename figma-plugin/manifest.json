@@ -1,0 +1,15 @@
+{
+  "api": "1.0.0",
+  "editorType": [
+    "figma"
+  ],
+  "id": "supr-ui-token-sync",
+  "main": "code.js",
+  "name": "Supr UI — Token Sync",
+  "networkAccess": {
+    "allowedDomains": [
+      "none"
+    ]
+  },
+  "ui": "ui.html"
+}

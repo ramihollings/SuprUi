@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "type": "registry:ui",
+  "title": "Button",
+  "description": "Clickable action in primary, secondary, outline, ghost, and danger variants; sm, md, and lg sizes.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "packages/web/src/components/button/Button.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\";\nimport type { ButtonHTMLAttributes, ReactNode } from \"react\";\nimport { cn } from \"../../lib/utils\";\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 rounded-rounded font-medium transition-colors duration-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus disabled:pointer-events-none disabled:opacity-50\",\n  {\n    variants: {\n      variant: {\n        primary: \"bg-brand text-brand-foreground hover:bg-brand-hover\",\n        secondary: \"border border-border bg-surface-raised text-text hover:bg-surface\",\n        outline: \"border border-border-strong bg-transparent text-text hover:bg-surface\",\n        ghost: \"bg-transparent text-text hover:bg-surface\",\n        danger: \"bg-danger-solid text-brand-foreground hover:bg-danger-hover\",\n      },\n      size: {\n        sm: \"h-8 px-3 text-sm\",\n        md: \"h-10 px-4 text-sm\",\n        lg: \"h-12 px-6 text-base\",\n      },\n    },\n    defaultVariants: {\n      variant: \"primary\",\n      size: \"md\",\n    },\n  },\n);\n\nexport interface ButtonProps\n  extends ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  /** Optional Lucide icon rendered before the label. */\n  icon?: ReactNode;\n}\n\n/**\n * Button. Icon-only buttons must receive an accessible label\n * (e.g. `aria-label`) from the caller.\n */\nexport function Button({\n  variant,\n  size,\n  disabled,\n  icon,\n  children,\n  className,\n  ...props\n}: ButtonProps) {\n  return (\n    <button\n      type=\"button\"\n      className={cn(buttonVariants({ variant, size }), className)}\n      disabled={disabled}\n      {...props}\n    >\n      {icon ? (\n        <span aria-hidden=\"true\" className=\"inline-flex shrink-0 [&>svg]:size-4\">\n          {icon}\n        </span>\n      ) : null}\n      {children}\n    </button>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/button.tsx"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast",
+  "type": "registry:ui",
+  "title": "Toast",
+  "description": "Toast notifications via toast({ title, description, variant }) rendered by <Toaster />.",
+  "dependencies": [
+    "@base-ui/react",
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "packages/web/src/components/toast/Toast.tsx",
+      "content": "import { Toast as BaseToast } from \"@base-ui/react/toast\";\nimport {\n  AlertTriangle,\n  CheckCircle2,\n  Info,\n  X,\n  XCircle,\n  type LucideIcon,\n} from \"lucide-react\";\nimport { motion } from \"motion/react\";\nimport { motionDurations, motionEaseOut } from \"../../lib/motion\";\nimport { cn } from \"../../lib/utils\";\n\n/** Singleton manager backing the imperative `toast()` API. */\nconst toastManager = BaseToast.createToastManager();\n\nexport type ToastVariant = \"default\" | \"success\" | \"error\" | \"warning\";\n\nexport interface ToastOptions {\n  title: string;\n  description?: string;\n  variant?: ToastVariant;\n}\n\nconst variantIcons: Record<ToastVariant, LucideIcon> = {\n  default: Info,\n  success: CheckCircle2,\n  error: XCircle,\n  warning: AlertTriangle,\n};\n\nconst variantIconClasses: Record<ToastVariant, string> = {\n  default: \"text-text-muted\",\n  success: \"text-success\",\n  error: \"text-danger\",\n  warning: \"text-warning\",\n};\n\n/**\n * Show a toast. Requires a `<Toaster />` rendered once at the app root.\n * Color is never the only signal: every variant pairs its color with an icon.\n */\nexport function toast({ title, description, variant = \"default\" }: ToastOptions) {\n  toastManager.add({\n    title,\n    description,\n    // Base UI stores this as `type`; we read it back in <Toaster />.\n    type: variant,\n  });\n}\n\nfunction ToastList() {\n  const { toasts } = BaseToast.useToastManager();\n  return toasts.map((item) => {\n    const variant = (item.type as ToastVariant | undefined) ?? \"default\";\n    const Icon = variantIcons[variant];\n    return (\n      <BaseToast.Root\n        key={item.id}\n        toast={item}\n        render={\n          <motion.div\n            initial={{ opacity: 0, y: 8 }}\n            animate={{ opacity: 1, y: 0 }}\n            transition={{ duration: motionDurations.base, ease: motionEaseOut }}\n          />\n        }\n        className=\"flex w-full items-start gap-3 rounded-extra-rounded border border-border bg-surface-raised p-4 text-text\"\n      >\n        <Icon\n          className={cn(\"mt-0.5 size-5 shrink-0\", variantIconClasses[variant])}\n          aria-hidden=\"true\"\n        />\n        <BaseToast.Content className=\"flex min-w-0 flex-1 flex-col gap-0.5\">\n          <BaseToast.Title className=\"text-sm font-semibold text-text\" />\n          <BaseToast.Description className=\"text-sm text-text-muted\" />\n        </BaseToast.Content>\n        <BaseToast.Close\n          aria-label=\"Dismiss toast\"\n          className=\"inline-flex size-6 shrink-0 items-center justify-center rounded-rounded text-text-muted transition-colors duration-fast hover:bg-surface hover:text-text focus-visible:outline-2 focus-visible:outline-focus\"\n        >\n          <X className=\"size-4\" aria-hidden=\"true\" />\n        </BaseToast.Close>\n      </BaseToast.Root>\n    );\n  });\n}\n\n/**\n * Render once at the app root. Toasts are added imperatively via `toast()`.\n */\nexport function Toaster() {\n  return (\n    // `limit` is above Base UI's default of 3 so a burst of toasts (e.g. a\n    // form save followed by two confirmations) stays visible instead of\n    // the oldest going inert.\n    <BaseToast.Provider toastManager={toastManager} limit={10}>\n      <BaseToast.Portal>\n        <BaseToast.Viewport className=\"fixed right-4 bottom-4 z-50 flex w-[calc(100vw-2rem)] max-w-sm flex-col gap-2\">\n          <ToastList />\n        </BaseToast.Viewport>\n      </BaseToast.Portal>\n    </BaseToast.Provider>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/toast.tsx"
+    }
+  ]
+}

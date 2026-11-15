@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Supr UI — Token Sync</title>
+  <style>
+    /* Figma's own UI variables — no hard-coded colors here. */
+    body {
+      margin: 0;
+      padding: 16px;
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--figma-color-text);
+      background: var(--figma-color-bg);
+    }
+    h1 { font-size: 13px; margin: 0 0 4px; }
+    p { margin: 0 0 12px; color: var(--figma-color-text-secondary); }
+    button {
+      font: inherit;
+      border: 0;
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      background: var(--figma-color-bg-brand);
+      color: var(--figma-color-text-onbrand);
+    }
+    button:disabled { opacity: 0.5; cursor: default; }
+    button.secondary {
+      background: var(--figma-color-bg-secondary);
+      color: var(--figma-color-text);
+      margin-left: 8px;
+    }
+    #log {
+      margin-top: 12px;
+      padding: 8px;
+      height: 150px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      border-radius: 6px;
+      background: var(--figma-color-bg-secondary);
+      color: var(--figma-color-text-secondary);
+    }
+    #log .error { color: var(--figma-color-text-danger); }
+  </style>
+</head>
+<body>
+  <h1>Supr UI — Token Sync</h1>
+  <p>Creates or updates Figma Variables from the Supr UI tokens bundled with
+  this plugin (collections: color, spacing, radius, border, typography,
+  motion — Dark and Light modes on color). Re-running is safe: existing
+  variables are updated in place, never duplicated.</p>
+  <button id="sync">Sync tokens</button>
+  <button id="close" class="secondary">Close</button>
+  <div id="log">Ready. Token values come from tokens/*.json via the sync script — nothing is typed here.</div>
+  <script>
+    var logEl = document.getElementById('log');
+    var syncBtn = document.getElementById('sync');
+    function log(line, isError) {
+      var div = document.createElement('div');
+      if (isError) div.className = 'error';
+      div.textContent = line;
+      logEl.appendChild(div);
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+    syncBtn.onclick = function () {
+      syncBtn.disabled = true;
+      logEl.textContent = '';
+      log('Syncing…');
+      parent.postMessage({ pluginMessage: { type: 'sync' } }, '*');
+    };
+    document.getElementById('close').onclick = function () {
+      parent.postMessage({ pluginMessage: { type: 'close' } }, '*');
+    };
+    onmessage = function (event) {
+      var msg = event.data.pluginMessage;
+      if (!msg) return;
+      if (msg.type === 'log') log(msg.line);
+      if (msg.type === 'done') {
+        var r = msg.report;
+        log('Done: ' + r.created + ' created, ' + r.updated + ' values set, ' +
+            r.unchanged + ' already correct, ' + r.aliases + ' aliases.');
+        if (r.warnings.length) r.warnings.forEach(function (w) { log('Warning: ' + w, true); });
+        syncBtn.disabled = false;
+      }
+      if (msg.type === 'error') {
+        log('Failed: ' + msg.message, true);
+        syncBtn.disabled = false;
+      }
+    };
+  </script>
+</body>
+</html>

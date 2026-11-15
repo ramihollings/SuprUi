@@ -1,0 +1,55 @@
+/**
+ * Supr UI — NativeWind v4 entry stylesheet for the CONSUMING APP.
+ *
+ * Import this file once, at the app entry point:
+ *
+ *   import "@mrtechnology/ui-native/global.css";
+ *
+ * What it does:
+ * 1. Imports the Supr token variables (`@mrtechnology/tokens/web.css`): the dark
+ *    set on `:root`. These are the single source of truth — no hex value
+ *    appears in this file.
+ * 2. Emits the Tailwind v3 directives NativeWind v4 compiles
+ *    (`@tailwind base/components/utilities`). The colour/radius/width
+ *    utilities themselves (`bg-background`, `text-text-muted`,
+ *    `border-border`, `rounded-rounded`, …) come from the companion
+ *    `tailwind.config.js` in this package, which maps them to the
+ *    variables above.
+ *
+ * NativeWind version note (verified 2026-11-13): stable NativeWind v4
+ * pairs with Tailwind CSS v3 and the `tailwind.config.js` + `nativewind/preset`
+ * setup — see https://www.nativewind.dev/getting-started/react-native.
+ * The CSS-first `@theme` wiring belongs to Tailwind v4 / NativeWind v5
+ * (preview at the time of writing), not to stable v4. When the system
+ * moves to NativeWind v5, this file becomes an `@import "tailwindcss"`
+ * + `@theme inline` file and the config file goes away; the token
+ * variables it references do not change.
+ *
+ * Theming limit (by design): these CSS variables are static at build
+ * time — NativeWind has no `data-theme` equivalent on React Native, so
+ * `bg-background` always resolves to the dark set. The components in
+ * this package therefore do NOT style themselves with these classes;
+ * they style from the `theme` object (`useTheme()` in `./theme`), which
+ * switches dark/light at runtime. This file exists so consumer screens
+ * can use the same token utilities alongside the components.
+ *
+ * Consumer setup (bare React Native; Expo differs only in the Metro
+ * wrapper — see the package README):
+ *
+ *   // babel.config.js — the jsxImportSource transform
+ *   module.exports = {
+ *     presets: [["module:metro-react-native-babel-preset", { jsxImportSource: "nativewind" }]],
+ *     plugins: ["nativewind/babel"],
+ *   };
+ *   // metro.config.js
+ *   const { withNativeWind } = require("nativewind/metro");
+ *   module.exports = withNativeWind(config, { input: "./global.css" });
+ *
+ * (Paths above are the consuming app's own files, not this package's.)
+ */
+
+@import "@mrtechnology/tokens/web.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -1,0 +1,52 @@
+/**
+ * Supr UI docs theme — Starlight mapped onto the @mrtechnology/tokens variables.
+ *
+ * Every value below is a `var(--…)` reference into the token CSS imported
+ * on the first line. No literal color, spacing, radius, or duration value
+ * appears in this file: tokens are the only source of truth, and the
+ * dark/light switch rides on the token CSS's own `[data-theme="light"]`
+ * override, which matches the `data-theme` attribute Starlight sets on
+ * `<html>` for its theme toggle.
+ *
+ * Starlight's gray scale runs bright-to-dark in the dark theme and
+ * dark-to-bright in the light theme, so the gray mapping is split per
+ * theme below. The cobalt ramp does not flip with the theme, so the
+ * accent tints are split per theme too.
+ */
+@import "@mrtechnology/tokens/web.css";
+
+:root {
+  --sl-color-accent: var(--color-brand);
+  --sl-color-accent-low: var(--color-cobalt-900);
+  --sl-color-accent-high: var(--color-cobalt-300);
+  --sl-color-white: var(--color-black-1200);
+  --sl-color-gray-1: var(--color-black-1200);
+  --sl-color-gray-2: var(--color-black-1000);
+  --sl-color-gray-3: var(--color-black-800);
+  --sl-color-gray-4: var(--color-black-700);
+  --sl-color-gray-5: var(--color-black-300);
+  --sl-color-gray-6: var(--color-black-200);
+  --sl-color-black: var(--color-black-0);
+  --sl-color-text: var(--color-text);
+  --sl-color-text-accent: var(--color-brand);
+  --sl-color-text-invert: var(--color-brand-foreground);
+  --sl-color-bg: var(--color-background);
+  --sl-color-bg-nav: var(--color-surface);
+  --sl-color-bg-sidebar: var(--color-background);
+  --sl-color-bg-inline-code: var(--color-surface-raised);
+  --sl-color-hairline: var(--color-border);
+  --sl-color-hairline-light: var(--color-border);
+  --sl-color-hairline-shade: var(--color-border-strong);
+  --sl-font: var(--font-sans);
+}
+
+:root[data-theme="light"] {
+  --sl-color-accent-low: var(--color-cobalt-50);
+  --sl-color-accent-high: var(--color-cobalt-600);
+  --sl-color-gray-1: var(--color-black-0);
+  --sl-color-gray-2: var(--color-black-600);
+  --sl-color-gray-3: var(--color-black-700);
+  --sl-color-gray-4: var(--color-black-900);
+  --sl-color-gray-5: var(--color-black-1000);
+  --sl-color-gray-6: var(--color-black-1100);
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-native",
+  "type": "registry:ui",
+  "title": "Card",
+  "description": "Compound content card (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter).",
+  "dependencies": [],
+  "registryDependencies": [
+    "theme-native"
+  ],
+  "files": [
+    {
+      "path": "packages/native/src/components/card/Card.tsx",
+      "content": "/**\n * Card — Supr UI native.\n *\n * Compound: `Card`, `CardHeader`, `CardTitle`, `CardDescription`,\n * `CardContent`, `CardFooter`. Panels use the extra-rounded token\n * radius; the header/content/footer spacing comes from the spacing\n * token. No primitive underlies Card — it is layout, not behaviour.\n */\nimport type { ReactNode } from 'react';\nimport { Text, View } from 'react-native';\nimport { fontWeight, useTheme } from '../../lib/theme';\n\nexport function Card({ children }: { children: ReactNode }) {\n  const t = useTheme();\n  return (\n    <View\n      style={{\n        backgroundColor: t.colors.surface,\n        borderRadius: t.radii.extraRounded,\n        borderWidth: t.borderWidth.thin,\n        borderColor: t.colors.border,\n        padding: t.spacing[4],\n      }}\n    >\n      {children}\n    </View>\n  );\n}\n\nexport function CardHeader({ children }: { children: ReactNode }) {\n  const t = useTheme();\n  return <View style={{ marginBottom: t.spacing[3] }}>{children}</View>;\n}\n\nexport function CardTitle({ children }: { children: ReactNode }) {\n  const t = useTheme();\n  return (\n    <Text\n      style={{\n        color: t.colors.text,\n        fontSize: t.typography.sizes.lg.fontSize,\n        lineHeight: t.typography.sizes.lg.lineHeight,\n        fontWeight: fontWeight(t, 'semibold'),\n      }}\n    >\n      {children}\n    </Text>\n  );\n}\n\nexport function CardDescription({ children }: { children: ReactNode }) {\n  const t = useTheme();\n  return (\n    <Text\n      style={{\n        color: t.colors.textMuted,\n        fontSize: t.typography.sizes.sm.fontSize,\n        lineHeight: t.typography.sizes.sm.lineHeight,\n        marginTop: t.spacing[1],\n      }}\n    >\n      {children}\n    </Text>\n  );\n}\n\nexport function CardContent({ children }: { children: ReactNode }) {\n  return <View>{children}</View>;\n}\n\nexport function CardFooter({ children }: { children: ReactNode }) {\n  const t = useTheme();\n  return (\n    <View\n      style={{\n        flexDirection: 'row',\n        justifyContent: 'flex-end',\n        gap: t.spacing[2],\n        marginTop: t.spacing[4],\n      }}\n    >\n      {children}\n    </View>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/card-native.tsx"
+    }
+  ],
+  "platform": "react-native"
+}

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "@mrtechnology/tokens/web.css";
+
+@layer base {
+  body {
+    @apply bg-background font-sans text-text antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-native",
+  "type": "registry:ui",
+  "title": "Input",
+  "description": "Text input with optional label and error state.",
+  "dependencies": [],
+  "registryDependencies": [
+    "theme-native"
+  ],
+  "files": [
+    {
+      "path": "packages/native/src/components/input/Input.tsx",
+      "content": "/**\n * Input — Supr UI native.\n *\n * Labelled text field with an error state. `error` renders the error\n * message under the field and switches the border to the danger token;\n * the field stays labelled by `label`. Focus uses the strong border\n * token (the native theme has no `focus` colour — see the tokens\n * README); the border-width change is the visible focus signal.\n */\nimport { useState } from 'react';\nimport { Text, TextInput, View } from 'react-native';\nimport { fontWeight, useTheme } from '../../lib/theme';\n\nexport type InputSize = 'sm' | 'md' | 'lg';\n\nexport interface InputProps {\n  label?: string;\n  placeholder?: string;\n  value: string;\n  onChangeText: (text: string) => void;\n  error?: string;\n  disabled?: boolean;\n  size?: InputSize;\n}\n\nexport function Input({\n  label,\n  placeholder,\n  value,\n  onChangeText,\n  error,\n  disabled = false,\n  size = 'md',\n}: InputProps) {\n  const t = useTheme();\n  const [focused, setFocused] = useState(false);\n\n  const height =\n    size === 'sm' ? t.spacing[8] : size === 'lg' ? t.spacing[12] : t.spacing[10];\n  const fontSize =\n    size === 'sm' ? t.typography.sizes.sm : t.typography.sizes.base;\n\n  return (\n    <View>\n      {label ? (\n        <Text\n          style={{\n            color: t.colors.text,\n            fontSize: t.typography.sizes.sm.fontSize,\n            lineHeight: t.typography.sizes.sm.lineHeight,\n            fontWeight: fontWeight(t, 'medium'),\n            marginBottom: t.spacing[1],\n          }}\n        >\n          {label}\n        </Text>\n      ) : null}\n      <TextInput\n        value={value}\n        onChangeText={onChangeText}\n        placeholder={placeholder}\n        placeholderTextColor={t.colors.textMuted}\n        editable={!disabled}\n        onFocus={() => setFocused(true)}\n        onBlur={() => setFocused(false)}\n        accessibilityLabel={label ?? placeholder}\n        accessibilityState={{ disabled }}\n        style={{\n          height,\n          paddingHorizontal: t.spacing[3],\n          backgroundColor: t.colors.surface,\n          color: t.colors.text,\n          fontSize: fontSize.fontSize,\n          lineHeight: fontSize.lineHeight,\n          borderRadius: t.radii.rounded,\n          borderWidth: t.borderWidth.thin,\n          borderColor: error\n            ? t.colors.danger\n            : focused\n              ? t.colors.borderStrong\n              : t.colors.border,\n          opacity: disabled ? 0.5 : 1,\n        }}\n      />\n      {error ? (\n        <Text\n          accessibilityRole=\"alert\"\n          accessible\n          style={{\n            color: t.colors.danger,\n            fontSize: t.typography.sizes.xs.fontSize,\n            lineHeight: t.typography.sizes.xs.lineHeight,\n            marginTop: t.spacing[1],\n          }}\n        >\n          {error}\n        </Text>\n      ) : null}\n    </View>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/input-native.tsx"
+    }
+  ],
+  "platform": "react-native"
+}

@@ -1,0 +1,38 @@
+# 07 — Popover + Card + Avatar: pick in the Popover, press the Card action,
+# check the Avatar fallbacks.
+appId: ${APP_ID}
+name: Popover, Card and Avatar screen interactions
+---
+- launchApp:
+    clearState: true
+# Popover — picking an option closes it and updates the picked line.
+- tapOn:
+    id: "nav-popover"
+- assertVisible:
+    id: "screen-popover"
+- assertVisible: "Nothing picked yet"
+- tapOn: "Open popover"
+- assertVisible: "Quick actions"
+- tapOn: "Duplicate"
+- assertVisible: "Picked: Duplicate"
+- tapOn:
+    id: "nav-back"
+# Card
+- tapOn:
+    id: "nav-card"
+- assertVisible:
+    id: "screen-card"
+- assertVisible: "Opened 0 times"
+- tapOn: "Open inbox"
+- assertVisible: "Opened 1 time"
+- tapOn:
+    id: "nav-back"
+# Avatar — no src on the first three, broken src on the last: fallbacks show.
+- tapOn:
+    id: "nav-avatar"
+- assertVisible:
+    id: "screen-avatar"
+- assertVisible: "SK"
+- assertVisible: "JT"
+- tapOn:
+    id: "nav-back"

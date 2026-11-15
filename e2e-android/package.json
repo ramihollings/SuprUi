@@ -1,0 +1,1 @@
+{"description":"Supr UI Android e2e suite (Maestro YAML flows) against apps/demo. Not part of the npm workspaces; Maestro is a standalone CLI, not an npm dependency.","license":"MIT","name":"@mrtechnology/e2e-android","private":true,"scripts":{"test":"./run.sh","validate":"python3 scripts/validate-flows.py"},"version":"0.1.0"}

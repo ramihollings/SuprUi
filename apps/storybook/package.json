@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "@mrtechnology/ui": "^0.1.0",
+    "lucide-react": "^1.72.0",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "description": "Supr UI Storybook workshop — web components only (@mrtechnology/ui). Dark default, light via the theme toolbar; axe runs in every story via @storybook/addon-a11y.",
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@storybook/addon-a11y": "^10.6.7",
+    "@storybook/addon-docs": "^10.6.7",
+    "@storybook/react-vite": "^10.6.7",
+    "@storybook/test-runner": "^0.26.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "axe-playwright": "^2.2.2",
+    "storybook": "^10.6.7",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^7.0.2",
+    "vite": "^7.0.0"
+  },
+  "license": "MIT",
+  "name": "@mrtechnology/storybook",
+  "private": true,
+  "scripts": {
+    "build-storybook": "storybook build",
+    "storybook": "storybook dev -p 6006",
+    "typecheck": "tsc --noEmit",
+    "test": "playwright test",
+    "test:visual": "playwright test tests/visual",
+    "test:visual:update": "playwright test tests/visual --update-snapshots",
+    "test:storybook": "test-storybook --url http://localhost:6006"
+  },
+  "type": "module",
+  "version": "0.1.0"
+}

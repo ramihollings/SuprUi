@@ -1,0 +1,29 @@
+# 05 — Input + Dialog: type into the Input, then open the Dialog and confirm.
+appId: ${APP_ID}
+name: Input and Dialog screen interactions
+---
+- launchApp:
+    clearState: true
+# Input — tap the field by its placeholder text, then type.
+- tapOn:
+    id: "nav-input"
+- assertVisible:
+    id: "screen-input"
+- tapOn: "e.g. Supr HQ"
+- inputText: "Hello Supr"
+- hideKeyboard
+- assertVisible: "You typed: Hello Supr"
+- tapOn:
+    id: "nav-back"
+# Dialog — open, confirm via the Publish action, count goes 0 -> 1.
+- tapOn:
+    id: "nav-dialog"
+- assertVisible:
+    id: "screen-dialog"
+- assertVisible: "Confirmed 0 times"
+- tapOn: "Open dialog"
+- assertVisible: "Publish workspace?"
+- tapOn: "Publish"
+- assertVisible: "Confirmed 1 time"
+- tapOn:
+    id: "nav-back"

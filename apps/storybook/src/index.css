@@ -1,0 +1,11 @@
+/* Storybook app root stylesheet. Pulls in Tailwind v4 + the @mrtechnology/tokens
+   CSS variables and the @theme mapping via @mrtechnology/ui/styles.css.
+   Dark is the default theme; light is selected with data-theme="light"
+   on the root element (see .storybook/preview.ts). */
+@import "@mrtechnology/ui/styles.css";
+
+/* Tailwind v4 scans this app's own files for utilities automatically, but
+   the component classes live in @mrtechnology/ui's built output (packages/web/dist),
+   which is gitignored and therefore not auto-scanned. Point Tailwind at it
+   explicitly so every class the real components use is generated. */
+@source "../../../packages/web/dist";
