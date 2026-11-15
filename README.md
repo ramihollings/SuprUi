@@ -142,7 +142,7 @@ platform-specific props differ where the contract says so
 Two ways to get Supr UI (D7, hosting decided in M2):
 
 - **npm** — versioned packages `@mrtechnology/ui`, `@mrtechnology/ui-native`, `@mrtechnology/tokens`,
-  published under the public `@mrtechnology` scope. Not published yet.
+  published 2026-11-14 under the public `@mrtechnology` scope, all 0.1.0. Install-verified.
 - **Registry** — copy-paste via the shadcn-style registry in
   `registry.json` (23 items; `name: supr-ui`, homepage
   <https://supr.technology>), statically hosted (suggested host
@@ -154,7 +154,7 @@ Two ways to get Supr UI (D7, hosting decided in M2):
 
 ```
 .
-├── decisions.md        # The decisions (D1–D22) behind this system — read first
+├── decisions.md        # The decisions (D1–D25) behind this system — read first
 ├── AGENTS.md           # Agent interface: how AI agents build with Supr UI correctly
 ├── LICENSE             # MIT
 ├── NOTICE              # Third-party attributions

@@ -354,6 +354,10 @@ No tool picked — two rules decided from the audit evidence (`CONTRAST-AUDIT.md
 - **Outage on the day:** the VM egress proxy was down for about 10 minutes during the publish (curl and Python both timed out); it recovered on its own. The whoami proof ran after recovery.
 - The token cannot list org members (403 on that endpoint). `@mrtechnology/mcp-server` stays private by design and is not published.
 
+## D25 — Source home: GitHub ramihollings/SuprUi (public)
+
+**Picked 2026-11-14 (user's decision):** the design system source lives in a public GitHub repo, [ramihollings/SuprUi](https://github.com/ramihollings/SuprUi), created by the user 2026-11-14. The first push (217 text files, commit `dd24a163`) went through the GitHub connector's snapshot push (`push_files`), which only handles UTF-8 files. The 26 PNG visual-regression baselines (`apps/storybook/tests/visual/__snapshots__/`) cannot go through that route and were held back; they are handed to the user as a zip to upload. Sync provenance for snapshot pushes is recorded in `design-system.muse-github-snapshot-sync.json` next to the repo directory (never inside it). The npm packages are the distribution; GitHub is the source backup and home.
+
 ## Notes / things I did not put to a vote
 
 - **Kumo is patterns, not base** — its semantic tokens, CLI, Figma sync, and AGENTS.md are adopted; its components aren't, because it has no React Native story.

@@ -1,6 +1,6 @@
 # Publish runbook — Supr UI v0.1.0
 
-Status: **PUBLISHED 2026-11-14 ~17:45 EST** — `@mrtechnology/tokens`, `@mrtechnology/ui`, `@mrtechnology/ui-native`, all 0.1.0, public. Install-verified in a scratch dir and `npm view` prints 0.1.0 for each. **No npm org is needed** — a scoped publish under the user's own username scope (`mrtechnology`) needs no org (decision D23, 2026-11-14). Publish route and staged-publishing behavior: decision D24 and `~/workspace/custom-connectors/custom.npm/CONNECTOR.md`.
+Status: **PUBLISHED 2026-11-14 ~17:45 EST** — `@mrtechnology/tokens`, `@mrtechnology/ui`, `@mrtechnology/ui-native`, all 0.1.0, public. Install-verified in a scratch dir and `npm view` prints 0.1.0 for each. Source home: public GitHub repo [ramihollings/SuprUi](https://github.com/ramihollings/SuprUi) (decision D25). **No npm org is needed** — a scoped publish under the user's own username scope (`mrtechnology`) needs no org (decision D23, 2026-11-14). Publish route and staged-publishing behavior: decision D24 and `~/workspace/custom-connectors/custom.npm/CONNECTOR.md`.
 
 ## Packages to publish (in this order)
 
