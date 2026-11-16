@@ -10,8 +10,8 @@
 import type { ReactNode } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { ChevronLeft } from 'lucide-react-native';
-import { fontWeight, useTheme } from '@mrtechnology/ui-native';
-import type { SuprTheme } from '@mrtechnology/ui-native';
+import { fontWeight, useTheme } from '@suprui/ui-native';
+import type { SuprTheme } from '@suprui/ui-native';
 
 export function useDemoStyles() {
   const t = useTheme();

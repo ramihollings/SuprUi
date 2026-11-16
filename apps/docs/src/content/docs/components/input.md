@@ -23,7 +23,7 @@ On web, `Input` also accepts the standard HTML input attributes except
 
 ```tsx
 import { useState } from "react";
-import { Input } from "@mrtechnology/ui";
+import { Input } from "@suprui/ui";
 
 const [name, setName] = useState("");
 
@@ -47,7 +47,7 @@ const [name, setName] = useState("");
 
 ```tsx
 import { useState } from "react";
-import { Input } from "@mrtechnology/ui-native";
+import { Input } from "@suprui/ui-native";
 
 const [name, setName] = useState("");
 

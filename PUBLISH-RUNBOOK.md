@@ -1,33 +1,36 @@
 # Publish runbook — Supr UI v0.1.0
 
-Status: **PUBLISHED 2026-11-14 ~17:45 EST** — `@mrtechnology/tokens`, `@mrtechnology/ui`, `@mrtechnology/ui-native`, all 0.1.0, public. Install-verified in a scratch dir and `npm view` prints 0.1.0 for each. Source home: public GitHub repo [ramihollings/SuprUi](https://github.com/ramihollings/SuprUi) (decision D25). **No npm org is needed** — a scoped publish under the user's own username scope (`mrtechnology`) needs no org (decision D23, 2026-11-14). Publish route and staged-publishing behavior: decision D24 and `~/workspace/custom-connectors/custom.npm/CONNECTOR.md`.
+Status: **PUBLISHED 2026-11-14 ~17:45 EST** — `@mrtechnology/tokens`, `@mrtechnology/ui`, `@mrtechnology/ui-native`, all 0.1.0, public. Install-verified in a scratch dir and `npm view` prints 0.1.0 for each. Source home: public GitHub repo [ramihollings/SuprUi](https://github.com/ramihollings/SuprUi) (decision D25). **Renaming to `@suprui` (D26, 2026-11-15):** repo renamed and re-verified; the `@suprui` publish is blocked on the user creating the npm org `suprui` and submitting a new granular token scoped to `@suprui`. Publish route and staged-publishing behavior: decision D24 and `~/workspace/custom-connectors/custom.npm/CONNECTOR.md`.
 
 ## Packages to publish (in this order)
 
 | # | Package | Version | Why this order |
 |---|---------|---------|----------------|
-| 1 | `@mrtechnology/tokens` | 0.1.0 | No Supr deps; both component packages depend on it |
-| 2 | `@mrtechnology/ui` | 0.1.0 | Depends on `@mrtechnology/tokens` |
-| 3 | `@mrtechnology/ui-native` | 0.1.0 | Depends on `@mrtechnology/tokens` |
+| 1 | `@suprui/tokens` | 0.1.0 | No Supr deps; both component packages depend on it |
+| 2 | `@suprui/ui` | 0.1.0 | Depends on `@suprui/tokens` |
+| 3 | `@suprui/ui-native` | 0.1.0 | Depends on `@suprui/tokens` |
 
 All three already carry `publishConfig: { "access": "public" }`. `npm pack --dry-run`
-was clean at M2 assembly (tokens 6.4 kB, web 10.5 kB, native 18.1 kB); `npm view`
-confirmed all four names are free on the registry (404) on 2026-11-14:
-`@mrtechnology/tokens`, `@mrtechnology/ui`, `@mrtechnology/ui-native`,
-`@mrtechnology/mcp-server`.
+was clean at M2 assembly (tokens 6.4 kB, web 10.5 kB, native 18.1 kB). All four
+names were verified free on the registry (404) before publishing under
+`@mrtechnology` (2026-11-14). The `@suprui/*` names were verified free the
+same way on 2026-11-15 (404), and the org endpoint confirms no `suprui` org
+exists yet — create it in Step 1 before publishing.
 
-Do **not** publish: `@mrtechnology/mcp-server` (private by design — stdio server, run from source),
-`@mrtechnology/docs`, `@mrtechnology/demo` (apps, private).
+Do **not** publish: `@suprui/mcp-server` (private by design — stdio server, run from source),
+`@suprui/docs`, `@suprui/demo` (apps, private).
 
-## Step 1 — Create a granular access token (user, on npmjs.com, one-time)
+## Step 1 — Create the `suprui` org and a granular access token (user, on npmjs.com, one-time)
 
-No org, no org creation page — the `@mrtechnology` scope belongs to the user's
-own npm username, so it already exists. What is needed is a token that can
-publish under it:
+First, the org: `@suprui` is not the user's npm username, so an org named
+`suprui` must exist before anything can publish under it. Create it at
+npmjs.com/org/create (free, one-time, on the user's npm account). Then a new
+granular token scoped to `@suprui` — the 2026-11-14 token is scoped to
+`@mrtechnology` and cannot publish under `@suprui`.
 
-1. Sign in at https://www.npmjs.com (account `mrtechnology`).
+1. Sign in at https://www.npmjs.com (account `ramihollings`).
 2. Profile → **Access Tokens** → **Generate New Token** → **Granular Access Token**.
-3. Permissions: **Publish** (read-only is not enough). Scope: `@mrtechnology`.
+3. Permissions: **Publish** (read-only is not enough). Scope: `@suprui`.
    Set an expiry you are comfortable with; the token can be revoked any time.
 4. Copy the token once — npm never shows it again.
 
@@ -49,7 +52,7 @@ goes through its helper. The commands below are kept as the manual fallback.
 # Store the token in ~/.npmrc only (never in the repo, never in a file under version control)
 npm config set //registry.npmjs.org/:_authToken=<paste the token here>
 
-# Prove auth works (should print: mrtechnology)
+# Prove auth works (should print: ramihollings)
 npm whoami
 ```
 
@@ -62,6 +65,8 @@ published in order via the `custom.npm` helper
 <package-dir>`). Each PUT returned HTTP 202 `{"success":true}`; the real
 version landed after the registry's staged processing (~1–3 min each), verified
 through the abbreviated metadata, not the full packument GET (cached 404).
+
+**Re-do for `@suprui` once the org exists and the new token is submitted (D26).**
 
 No `prepublishOnly` script exists, so rebuild explicitly first — `dist/` is what
 ships (`files: ["dist", ...]`), and a stale `dist/` would publish old code.
@@ -77,9 +82,9 @@ npm test
 npm run typecheck --workspaces --if-present
 
 # Publish in dependency order — tokens first
-npm publish --workspace=@mrtechnology/tokens
-npm publish --workspace=@mrtechnology/ui
-npm publish --workspace=@mrtechnology/ui-native
+npm publish --workspace=@suprui/tokens
+npm publish --workspace=@suprui/ui
+npm publish --workspace=@suprui/ui-native
 ```
 
 If a publish fails halfway (e.g. tokens published, ui failed), just fix and re-run
@@ -90,18 +95,18 @@ version of the failed package only.
 
 **Done 2026-11-14** — scratch dir was `~/workspace/install-test` (not `/tmp`,
 to avoid the 512M tmpfs limit); removed after verification. All three
-installed at 0.1.0. One gotcha: do not verify with
+installed at 0.1.0 (that verification was for `@mrtechnology`). One gotcha: do not verify with
 `require('<name>/package.json')` — the packages define an `exports` map that
 does not export that path. Read the installed `package.json` files directly.
 
 ```bash
-mkdir -p /tmp/mrtechnology-install-test && cd /tmp/mrtechnology-install-test
+mkdir -p /tmp/suprui-install-test && cd /tmp/suprui-install-test
 npm init -y
-npm install @mrtechnology/ui @mrtechnology/tokens
-npm install @mrtechnology/ui-native @mrtechnology/tokens   # Android side
+npm install @suprui/ui @suprui/tokens
+npm install @suprui/ui-native @suprui/tokens   # Android side
 ```
 
-`npm view @mrtechnology/tokens version` should print `0.1.0` afterwards.
+`npm view @suprui/tokens version` should print `0.1.0` afterwards.
 
 ## Step 5 — Registry (static host, still undecided)
 

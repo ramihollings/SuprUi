@@ -1,7 +1,7 @@
 /**
  * Metro config for the Supr UI demo app (Expo SDK 55 tooling).
  *
- * Monorepo wiring: @mrtechnology/ui-native and @mrtechnology/tokens are workspace packages
+ * Monorepo wiring: @suprui/ui-native and @suprui/tokens are workspace packages
  * symlinked into this app's node_modules, and their real sources live at
  * the repo root. Metro must watch the whole workspace and resolve modules
  * from the root node_modules as well as this app's own, or the workspace

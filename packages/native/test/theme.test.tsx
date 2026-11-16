@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 import { render, screen } from '@testing-library/react-native';
 import { ThemeProvider, fontWeight, theme, useTheme } from '../src/theme';
 
-describe('@mrtechnology/tokens/native resolves in @mrtechnology/ui-native', () => {
+describe('@suprui/tokens/native resolves in @suprui/ui-native', () => {
   it('theme.dark is the default: black background, cobalt brand #1456F0', () => {
     expect(theme.dark.colors.background).toBe('#000000');
     expect(theme.dark.colors.brand).toBe('#1456F0');

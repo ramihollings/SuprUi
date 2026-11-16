@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import tokens from "@mrtechnology/tokens/tokens.json";
+import tokens from "@suprui/tokens/tokens.json";
 import {
   motionDurations,
   motionEaseOut,

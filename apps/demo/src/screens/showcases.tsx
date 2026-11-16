@@ -3,7 +3,7 @@
  *
  * Navigation contract: each screen's root View carries
  * `screen-<component>` in lowercase. Every screen is a live instance of
- * the real @mrtechnology/ui-native component with working state.
+ * the real @suprui/ui-native component with working state.
  */
 import { useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
@@ -29,7 +29,7 @@ import {
   TabsTrigger,
   fontWeight,
   toast,
-} from '@mrtechnology/ui-native';
+} from '@suprui/ui-native';
 import { ScreenShell, sectionLabelStyle, useDemoStyles } from '../screen-shell';
 import type { ComponentId } from './HomeScreen';
 

@@ -1,12 +1,12 @@
-# @mrtechnology/mcp-server
+# @suprui/mcp-server
 
 Supr UI MCP server — exposes the design system to AI agents over **stdio**.
 
-- **Tokens:** read live from the real token source (`@mrtechnology/tokens`
+- **Tokens:** read live from the real token source (`@suprui/tokens`
   `dist/tokens.json`, the Style Dictionary build of `tokens/*.json`).
   Nothing here duplicates token values by hand.
 - **Components:** the 10 Milestone 1 components — names, props (the
-  AGENTS.md contract), web (`@mrtechnology/ui`) and native (`@mrtechnology/ui-native`)
+  AGENTS.md contract), web (`@suprui/ui`) and native (`@suprui/ui-native`)
   usage.
 - **Guidance:** the repo AGENTS.md rules in machine-usable form.
 
@@ -14,11 +14,11 @@ Supr UI MCP server — exposes the design system to AI agents over **stdio**.
 
 ```bash
 # Build tokens first if they have never been built:
-npm run build --workspace=@mrtechnology/tokens
+npm run build --workspace=@suprui/tokens
 
 # Build + start the server (stdio):
-npm run build --workspace=@mrtechnology/mcp-server
-npm start --workspace=@mrtechnology/mcp-server
+npm run build --workspace=@suprui/mcp-server
+npm start --workspace=@suprui/mcp-server
 ```
 
 Requires Node >= 20.
@@ -66,8 +66,8 @@ transport is a later decision if the server ever needs to be shared.)
 ## Test
 
 ```bash
-npm test --workspace=@mrtechnology/mcp-server   # builds, then runs Vitest (10 tests)
-npm run typecheck --workspace=@mrtechnology/mcp-server
+npm test --workspace=@suprui/mcp-server   # builds, then runs Vitest (10 tests)
+npm run typecheck --workspace=@suprui/mcp-server
 ```
 
 Tests cover: server starts and lists its 5 tools; `supr_get_token`

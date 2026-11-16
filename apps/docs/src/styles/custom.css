@@ -1,5 +1,5 @@
 /**
- * Supr UI docs theme — Starlight mapped onto the @mrtechnology/tokens variables.
+ * Supr UI docs theme — Starlight mapped onto the @suprui/tokens variables.
  *
  * Every value below is a `var(--…)` reference into the token CSS imported
  * on the first line. No literal color, spacing, radius, or duration value
@@ -13,7 +13,7 @@
  * theme below. The cobalt ramp does not flip with the theme, so the
  * accent tints are split per theme too.
  */
-@import "@mrtechnology/tokens/web.css";
+@import "@suprui/tokens/web.css";
 
 :root {
   --sl-color-accent: var(--color-brand);

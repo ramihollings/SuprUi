@@ -1,4 +1,4 @@
-# @mrtechnology/tokens
+# @suprui/tokens
 
 Supr UI design tokens — black + cobalt, dark-first. The single source of
 truth for every color, spacing, radius, border width, type size, and motion
@@ -47,7 +47,7 @@ edit the token source and rebuild.
 ## Web
 
 ```css
-@import "@mrtechnology/tokens/web.css";
+@import "@suprui/tokens/web.css";
 ```
 
 CSS variables (dark default; light overrides under `[data-theme="light"]`):
@@ -79,7 +79,7 @@ block references the `:root` variables with `var()`, so switching
 ## Native
 
 ```ts
-import { theme } from "@mrtechnology/tokens/native";
+import { theme } from "@suprui/tokens/native";
 // theme.dark is the default; theme.light is the light theme.
 ```
 

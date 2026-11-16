@@ -15,7 +15,7 @@ description: Circular person/image avatar with a fallback shown when the image i
 ## Web
 
 ```tsx
-import { Avatar } from "@mrtechnology/ui";
+import { Avatar } from "@suprui/ui";
 
 <Avatar
   src="https://example.com/ada.jpg"
@@ -29,7 +29,7 @@ import { Avatar } from "@mrtechnology/ui";
 ## Native
 
 ```tsx
-import { Avatar } from "@mrtechnology/ui-native";
+import { Avatar } from "@suprui/ui-native";
 
 <Avatar
   src="https://example.com/ada.jpg"

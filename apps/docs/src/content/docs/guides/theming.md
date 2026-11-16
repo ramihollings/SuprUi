@@ -33,18 +33,18 @@ hard-code colors there either. Motion durations come from tokens as well
 Opt into light once at the root with `<ThemeProvider mode="light">`:
 
 ```tsx
-import { ThemeProvider } from "@mrtechnology/ui-native";
+import { ThemeProvider } from "@suprui/ui-native";
 
 <ThemeProvider mode="light">{/* … */}</ThemeProvider>;
 ```
 
 `useTheme()` returns `theme.dark` by default and `theme.light` inside a
 light provider. The `theme` object is re-exported from
-`@mrtechnology/tokens/native` (`theme.dark` / `theme.light`), with the same shape
+`@suprui/tokens/native` (`theme.dark` / `theme.light`), with the same shape
 on both sides:
 
 ```ts
-import { theme } from "@mrtechnology/tokens/native";
+import { theme } from "@suprui/tokens/native";
 
 theme.dark.colors.background; // dark background
 theme.light.colors.background; // light background

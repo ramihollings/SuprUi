@@ -1,9 +1,9 @@
 /**
- * @mrtechnology/ui-native — Supr UI components for Android (React Native).
+ * @suprui/ui-native — Supr UI components for Android (React Native).
  *
- * Export names are identical to `@mrtechnology/ui` (web). Dark is the default
+ * Export names are identical to `@suprui/ui` (web). Dark is the default
  * theme; render `<ThemeProvider mode="light">` once at the app root to
- * opt into light. All styling comes from the `@mrtechnology/tokens` theme
+ * opt into light. All styling comes from the `@suprui/tokens` theme
  * object — see `./theme`.
  *
  * Portal-based components (Dialog, Popover, Select) need a

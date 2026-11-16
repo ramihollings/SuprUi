@@ -7,8 +7,8 @@
  * `nativewind/babel` plugin here on purpose: demo screens style from the
  * token theme object (`useTheme()`), never from NativeWind classes — the
  * classes resolve to the static dark set and cannot switch dark/light at
- * runtime (see @mrtechnology/ui-native README). NativeWind + Tailwind are still
- * declared dependencies because they are peers of @mrtechnology/ui-native.
+ * runtime (see @suprui/ui-native README). NativeWind + Tailwind are still
+ * declared dependencies because they are peers of @suprui/ui-native.
  */
 module.exports = function (api) {
   api.cache(true);

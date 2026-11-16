@@ -21,7 +21,7 @@ a Button is a Popover trigger via `asChild`).
 ## Web
 
 ```tsx
-import { Button } from "@mrtechnology/ui";
+import { Button } from "@suprui/ui";
 import { Plus } from "lucide-react";
 
 <Button variant="primary" onClick={save}>
@@ -40,7 +40,7 @@ import { Plus } from "lucide-react";
 ## Native
 
 ```tsx
-import { Button } from "@mrtechnology/ui-native";
+import { Button } from "@suprui/ui-native";
 import { Plus } from "lucide-react-native";
 
 <Button variant="primary" onPress={save}>

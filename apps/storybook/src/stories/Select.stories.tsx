@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Select } from "@mrtechnology/ui";
+import { Select } from "@suprui/ui";
 
 const options = [
   { label: "Draft", value: "draft" },

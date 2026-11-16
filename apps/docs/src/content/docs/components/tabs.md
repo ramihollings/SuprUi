@@ -21,7 +21,7 @@ On web, `Tabs` also accepts `className`.
 
 ```tsx
 import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@mrtechnology/ui";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@suprui/ui";
 
 const [tab, setTab] = useState("overview");
 
@@ -41,7 +41,7 @@ const [tab, setTab] = useState("overview");
 
 ```tsx
 import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@mrtechnology/ui-native";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@suprui/ui-native";
 
 const [tab, setTab] = useState("overview");
 

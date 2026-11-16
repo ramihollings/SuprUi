@@ -16,7 +16,7 @@ description: Binary on/off control with an optional label. State is exposed to a
 
 ```tsx
 import { useState } from "react";
-import { Switch } from "@mrtechnology/ui";
+import { Switch } from "@suprui/ui";
 
 const [enabled, setEnabled] = useState(false);
 
@@ -31,7 +31,7 @@ const [enabled, setEnabled] = useState(false);
 
 ```tsx
 import { useState } from "react";
-import { Switch } from "@mrtechnology/ui-native";
+import { Switch } from "@suprui/ui-native";
 
 const [enabled, setEnabled] = useState(false);
 

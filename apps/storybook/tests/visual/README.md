@@ -69,7 +69,7 @@ that caused them.
   their own baselines per browser.
 - **What is not covered:** interaction states beyond the open states
   above (hover, focus, keyboard navigation), responsive widths, and the
-  native (`@mrtechnology/ui-native`) components — Storybook is web-only.
+  native (`@suprui/ui-native`) components — Storybook is web-only.
 - **Flakiness seen so far:** none. The known risks are font loading
   (mitigated by waiting on `document.fonts.ready`) and toast auto-dismiss
   (Base UI default timeout; the test fires all four toasts and screenshots

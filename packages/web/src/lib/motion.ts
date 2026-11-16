@@ -1,6 +1,6 @@
 /**
  * Motion values for the Motion runtime, mirroring the token source of truth
- * (`tokens/motion.json`, built into `@mrtechnology/tokens`). Durations are seconds
+ * (`tokens/motion.json`, built into `@suprui/tokens`). Durations are seconds
  * here because Motion takes seconds; the values are the token values
  * (120ms / 200ms / 320ms). Kept in sync by `src/lib/motion.test.ts` —
  * do not change a value here without changing the token.

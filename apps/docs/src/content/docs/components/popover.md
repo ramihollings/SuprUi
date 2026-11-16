@@ -18,7 +18,7 @@ description: Controlled floating panel anchored to a trigger element — for men
 
 ```tsx
 import { useState } from "react";
-import { Button, Popover } from "@mrtechnology/ui";
+import { Button, Popover } from "@suprui/ui";
 
 const [open, setOpen] = useState(false);
 
@@ -37,7 +37,7 @@ const [open, setOpen] = useState(false);
 ```tsx
 import { useState } from "react";
 import { Text } from "react-native";
-import { Button, Popover } from "@mrtechnology/ui-native";
+import { Button, Popover } from "@suprui/ui-native";
 
 const [open, setOpen] = useState(false);
 

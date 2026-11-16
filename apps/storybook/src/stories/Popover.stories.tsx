@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button, Popover } from "@mrtechnology/ui";
+import { Button, Popover } from "@suprui/ui";
 
 const meta: Meta<typeof Popover> = {
   title: "Components/Popover",

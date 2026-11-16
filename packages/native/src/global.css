@@ -3,10 +3,10 @@
  *
  * Import this file once, at the app entry point:
  *
- *   import "@mrtechnology/ui-native/global.css";
+ *   import "@suprui/ui-native/global.css";
  *
  * What it does:
- * 1. Imports the Supr token variables (`@mrtechnology/tokens/web.css`): the dark
+ * 1. Imports the Supr token variables (`@suprui/tokens/web.css`): the dark
  *    set on `:root`. These are the single source of truth — no hex value
  *    appears in this file.
  * 2. Emits the Tailwind v3 directives NativeWind v4 compiles
@@ -48,7 +48,7 @@
  * (Paths above are the consuming app's own files, not this package's.)
  */
 
-@import "@mrtechnology/tokens/web.css";
+@import "@suprui/tokens/web.css";
 
 @tailwind base;
 @tailwind components;

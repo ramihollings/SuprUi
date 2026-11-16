@@ -13,32 +13,32 @@ description: Build interfaces with Supr UI — the black-and-cobalt, dark-first 
 
 ## Background
 
-Supr UI is MIT licensed, working name **Supr UI**, package `@mrtechnology/ui`. Brand: black and cobalt, dark-first. Cobalt primary is `#1456F0` — confirmed from supr.technology's stylesheet (2026-11-13).
+Supr UI is MIT licensed, working name **Supr UI**, package `@suprui/ui`. Brand: black and cobalt, dark-first. Cobalt primary is `#1456F0` — confirmed from supr.technology's stylesheet (2026-11-13).
 
 - **Web:** React + TypeScript, Tailwind v4, shadcn/ui on Base UI primitives (Radix is the fallback), `lucide-react`, Motion.
 - **Android:** React Native + TypeScript, NativeWind, React Native Reusables, `lucide-react-native`, Reanimated.
-- **Tokens:** shared W3C tokens via Style Dictionary (+ Tokens Studio as the Figma editor), package `@mrtechnology/tokens`. Component export names are identical on web and native.
+- **Tokens:** shared W3C tokens via Style Dictionary (+ Tokens Studio as the Figma editor), package `@suprui/tokens`. Component export names are identical on web and native.
 - **Testing / a11y:** Vitest + Playwright + axe-core (web) + Maestro Android e2e (suite in `e2e-android/`, unrun — no device here); Storybook test-runner 33 stories / 0 violations; Playwright visual baselines 26 (13 cases × dark/light); contrast audit via `node scripts/contrast-audit.mjs` (0 non-exempt failures).
-- **Monorepo:** `packages/tokens` (`@mrtechnology/tokens`), `packages/web` (`@mrtechnology/ui`), `packages/native` (`@mrtechnology/ui-native`), `apps/storybook`, `apps/docs` (Starlight), `apps/demo` (Expo), `packages/mcp-server` (stdio MCP), `figma-plugin`, `e2e-android`.
+- **Monorepo:** `packages/tokens` (`@suprui/tokens`), `packages/web` (`@suprui/ui`), `packages/native` (`@suprui/ui-native`), `apps/storybook`, `apps/docs` (Starlight), `apps/demo` (Expo), `packages/mcp-server` (stdio MCP), `figma-plugin`, `e2e-android`.
 
 ## Install
 
 ```bash
-npm install @mrtechnology/ui @mrtechnology/tokens
-# Android only, instead of @mrtechnology/ui:
-npm install @mrtechnology/ui-native @mrtechnology/tokens
+npm install @suprui/ui @suprui/tokens
+# Android only, instead of @suprui/ui:
+npm install @suprui/ui-native @suprui/tokens
 ```
 
 Import tokens once, at the app root. Web:
 
 ```css
-@import "@mrtechnology/tokens/web.css";
+@import "@suprui/tokens/web.css";
 ```
 
 Native:
 
 ```ts
-import { theme } from "@mrtechnology/tokens/native";
+import { theme } from "@suprui/tokens/native";
 ```
 
 ## Instructions
@@ -79,7 +79,7 @@ Use them in Tailwind v4 via the `@theme` mapping (e.g. `bg-background`, `text-mu
 
 ### Colors (native theme object)
 
-`theme.dark` / `theme.light` (from `@mrtechnology/tokens/native`) each have `colors` with exactly these keys: `background`, `surface`, `surfaceRaised`, `border`, `borderStrong`, `text`, `textMuted`, `brand`, `brandHover`, `brandForeground`, `danger`, `dangerHover`, `dangerSolid`, `track`, `success`, `warning`.
+`theme.dark` / `theme.light` (from `@suprui/tokens/native`) each have `colors` with exactly these keys: `background`, `surface`, `surfaceRaised`, `border`, `borderStrong`, `text`, `textMuted`, `brand`, `brandHover`, `brandForeground`, `danger`, `dangerHover`, `dangerSolid`, `track`, `success`, `warning`.
 
 Note: native `colors` has **no `focus` key** — `--color-focus` is web-only in the token contract. Do not invent a native `focus` color.
 
@@ -120,7 +120,7 @@ Sizes are font-size/line-height in px: `xs` 12/16, `sm` 14/20, `base` 16/24, `lg
 
 - **Dark is the default** on both platforms. Ship dark first; light must also work.
 - **Web:** light theme via `data-theme="light"` on the root element. Dark is the default when the attribute is absent.
-- **Native:** use `theme.light` instead of `theme.dark` from `@mrtechnology/tokens/native`.
+- **Native:** use `theme.light` instead of `theme.dark` from `@suprui/tokens/native`.
 - Never theme by swapping hex values in a component. Theme by switching the token set.
 
 ## Component catalog
@@ -132,7 +132,7 @@ Milestone 1 ships exactly these 10 components, with identical export names on we
 Props: `variant` (`primary` / `secondary` / `outline` / `ghost` / `danger`), `size` (`sm` / `md` / `lg`), `disabled`, `children`, `icon?` (a Lucide icon).
 
 ```tsx
-import { Button } from "@mrtechnology/ui";
+import { Button } from "@suprui/ui";
 import { Plus } from "lucide-react";
 
 <Button variant="primary" size="md" icon={<Plus />}>
@@ -146,7 +146,7 @@ import { Plus } from "lucide-react";
 Props: `label?`, `placeholder`, `value`, `onChange` (web) / `onChangeText` (native), `error?`, `disabled`, `size`.
 
 ```tsx
-import { Input } from "@mrtechnology/ui";
+import { Input } from "@suprui/ui";
 
 <Input
   label="Title"
@@ -164,7 +164,7 @@ On native, use `onChangeText` instead of `onChange`: `onChangeText={setTitle}`. 
 Props: `open`, `onOpenChange`, `title`, `description`, `children`, `actions`.
 
 ```tsx
-import { Dialog, Button } from "@mrtechnology/ui";
+import { Dialog, Button } from "@suprui/ui";
 
 <Dialog
   open={open}
@@ -189,7 +189,7 @@ import { Dialog, Button } from "@mrtechnology/ui";
 Props: `trigger`, `content`, `open`, `onOpenChange`, `side`, `align`.
 
 ```tsx
-import { Popover, Button } from "@mrtechnology/ui";
+import { Popover, Button } from "@suprui/ui";
 
 <Popover
   trigger={<Button variant="outline">Options</Button>}
@@ -208,7 +208,7 @@ import { Popover, Button } from "@mrtechnology/ui";
 Props: `options` (`{ label, value }[]`), `value`, `onValueChange`, `placeholder`, `label?`, `disabled`.
 
 ```tsx
-import { Select } from "@mrtechnology/ui";
+import { Select } from "@suprui/ui";
 
 <Select
   label="Status"
@@ -230,7 +230,7 @@ import { Select } from "@mrtechnology/ui";
 Compound: `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`. Props: `value`, `onValueChange` (on `Tabs`).
 
 ```tsx
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@mrtechnology/ui";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@suprui/ui";
 
 <Tabs value={tab} onValueChange={setTab}>
   <TabsList>
@@ -249,7 +249,7 @@ Use the named subcomponents — do not build tabs from ad-hoc divs/views.
 API: `toast({ title, description, variant })` + `<Toaster />`.
 
 ```tsx
-import { toast, Toaster } from "@mrtechnology/ui";
+import { toast, Toaster } from "@suprui/ui";
 
 // Render once, at the app root:
 <Toaster />;
@@ -265,7 +265,7 @@ Do not render a toast inline. `variant` selects the toast style; do not invent v
 Compound: `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`. No additional props are defined in the Milestone 1 contract — compose with the subcomponents.
 
 ```tsx
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button } from "@mrtechnology/ui";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button } from "@suprui/ui";
 
 <Card>
   <CardHeader>
@@ -286,7 +286,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, 
 Props: `src?`, `fallback`, `size` (`sm` / `md` / `lg`), `alt`.
 
 ```tsx
-import { Avatar } from "@mrtechnology/ui";
+import { Avatar } from "@suprui/ui";
 
 <Avatar src={user.avatarUrl} fallback="AK" size="md" alt="A. Khan" />
 ```
@@ -298,7 +298,7 @@ import { Avatar } from "@mrtechnology/ui";
 Props: `checked`, `onCheckedChange`, `label?`, `disabled`.
 
 ```tsx
-import { Switch } from "@mrtechnology/ui";
+import { Switch } from "@suprui/ui";
 
 <Switch
   label="Email notifications"

@@ -4,7 +4,7 @@ Repo guide for AI agents working in this monorepo. Read this before writing or e
 
 ## What Supr UI is
 
-A design language / component library, MIT licensed, working name **Supr UI**, package `@mrtechnology/ui`.
+A design language / component library, MIT licensed, working name **Supr UI**, package `@suprui/ui`.
 
 - **First consumer:** Supr (https://supr.technology) — a dense productivity workspace: SuprOS workspace, SuprCMS publishing, SuprInbox mail. Expect review/approval flows, composers, navigation, and data display.
 - **Second consumer:** mr.technology.
@@ -15,10 +15,10 @@ A design language / component library, MIT licensed, working name **Supr UI**, p
 ## Repo layout
 
 ```
-packages/tokens/     @mrtechnology/tokens — token source of truth (Style Dictionary build)
-packages/web/        @mrtechnology/ui — web components
-packages/native/     @mrtechnology/ui-native — Android components (same export names as web)
-packages/mcp-server/ @mrtechnology/mcp-server — MCP server (stdio; 5 tools + 3 resources)
+packages/tokens/     @suprui/tokens — token source of truth (Style Dictionary build)
+packages/web/        @suprui/ui — web components
+packages/native/     @suprui/ui-native — Android components (same export names as web)
+packages/mcp-server/ @suprui/mcp-server — MCP server (stdio; 5 tools + 3 resources)
 apps/storybook/      Storybook workshop (a11y addon runs axe in every story)
 apps/docs/           Starlight docs site (tokens, components, theming, usage)
 apps/demo/           Expo demo app (all 10 native components; on-device vehicle)
@@ -27,14 +27,14 @@ e2e-android/         Maestro Android e2e flows against apps/demo (unrun — no d
 scripts/             Repo scripts, incl. contrast-audit.mjs (run after any color-token change)
 ```
 
-Distribution is both npm (public `@mrtechnology` scope, `publishConfig: {access: "public"}`) and a static-hosted shadcn-style registry (`registry.json`, 23 items; suggested host `registry.supr.technology`, undecided). Nothing is published yet — see decisions.md D7. Docs: Storybook workshop + Starlight site (`apps/docs`). MCP server: `packages/mcp-server` (stdio). Figma sync: `figma-plugin/`.
+Distribution is both npm (public `@suprui` scope, `publishConfig: {access: "public"}`) and a static-hosted shadcn-style registry (`registry.json`, 23 items; suggested host `registry.supr.technology`, undecided). 0.1.0 published 2026-11-14 under `@mrtechnology`; migrating to `@suprui` (decisions.md D26) — publish pending an npm org + token. Docs: Storybook workshop + Starlight site (`apps/docs`). MCP server: `packages/mcp-server` (stdio). Figma sync: `figma-plugin/`.
 
 ## Install
 
 ```bash
-npm install @mrtechnology/ui @mrtechnology/tokens
-# Android only, instead of @mrtechnology/ui:
-npm install @mrtechnology/ui-native @mrtechnology/tokens
+npm install @suprui/ui @suprui/tokens
+# Android only, instead of @suprui/ui:
+npm install @suprui/ui-native @suprui/tokens
 ```
 
 Peer dependencies (web): React + TypeScript, Tailwind v4, Base UI, `lucide-react`, Motion. Peer dependencies (native): React Native + TypeScript, NativeWind, React Native Reusables, `lucide-react-native`, Reanimated. Do not add a new styling, icon, or motion dependency without a decision recorded in `decisions.md`.
@@ -48,7 +48,7 @@ Tokens live in `packages/tokens/` and are built by Style Dictionary. Never edit 
 Import the tokens once, at the app root:
 
 ```css
-@import "@mrtechnology/tokens/web.css";
+@import "@suprui/tokens/web.css";
 ```
 
 | Token group | Variables |
@@ -65,7 +65,7 @@ In Tailwind v4, use these via the `@theme` mapping (e.g. `bg-background`, `text-
 ### Native: theme object
 
 ```ts
-import { theme } from "@mrtechnology/tokens/native";
+import { theme } from "@suprui/tokens/native";
 // theme.dark is the default; theme.light is the light theme.
 ```
 
@@ -84,7 +84,7 @@ Note: the native `colors` object has no `focus` entry — the web `--color-focus
 
 - **Dark is the default** on both platforms. Ship dark first; light must also work, not just exist.
 - **Web:** light theme via `data-theme="light"` on the root element. Dark is the default when the attribute is absent.
-- **Native:** use `theme.light` instead of `theme.dark` from `@mrtechnology/tokens/native`.
+- **Native:** use `theme.light` instead of `theme.dark` from `@suprui/tokens/native`.
 - Never theme by swapping hex values in a component. Theme by switching the token set.
 
 ## Components

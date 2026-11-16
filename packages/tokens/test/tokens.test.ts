@@ -9,7 +9,7 @@ const readDist = (rel: string) => readFileSync(path.join(distDir, rel), 'utf8');
 const tokens = JSON.parse(readDist('tokens.json')) as Record<string, any>;
 const webCss = readDist('web.css');
 
-describe('@mrtechnology/tokens contract', () => {
+describe('@suprui/tokens contract', () => {
   it('cobalt 500 is #1456F0 (Supr brand hex, confirmed from supr.technology)', () => {
     expect(tokens.color.cobalt['500']).toBe('#1456F0');
     expect(webCss).toContain('--color-cobalt-500: #1456F0;');

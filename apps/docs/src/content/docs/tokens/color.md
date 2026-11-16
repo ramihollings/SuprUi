@@ -94,7 +94,7 @@ light overrides apply under `data-theme="light"` on web, and via
 ## Native
 
 ```ts
-import { theme } from "@mrtechnology/tokens/native";
+import { theme } from "@suprui/tokens/native";
 
 // theme.dark.colors / theme.light.colors:
 theme.dark.colors.background; // dark background

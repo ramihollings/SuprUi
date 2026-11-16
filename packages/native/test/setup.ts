@@ -1,5 +1,5 @@
 /**
- * Vitest setup for @mrtechnology/ui-native.
+ * Vitest setup for @suprui/ui-native.
  *
  * Import order matters: `./rn-register` FIRST — it installs the Babel
  * require-hook for `react-native` source before anything imports it.

@@ -1,5 +1,5 @@
 /**
- * Supr UI MCP server — @mrtechnology/mcp-server.
+ * Supr UI MCP server — @suprui/mcp-server.
  *
  * Transport: stdio only. This is a local development tool: the client
  * (Claude Code, Cursor, VS Code, …) spawns it and speaks MCP over
@@ -18,7 +18,7 @@
  *   supr://guidance    full guidance rules
  *
  * Token values always come from the real token source
- * (@mrtechnology/tokens dist/tokens.json); nothing here duplicates them.
+ * (@suprui/tokens dist/tokens.json); nothing here duplicates them.
  */
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
@@ -115,7 +115,7 @@ export function createSuprMcpServer(): McpServer {
 
   server.tool(
     "supr_list_components",
-    "List the 10 Supr UI components with a one-line summary and prop names. Export names are identical on web (@mrtechnology/ui) and native (@mrtechnology/ui-native).",
+    "List the 10 Supr UI components with a one-line summary and prop names. Export names are identical on web (@suprui/ui) and native (@suprui/ui-native).",
     {},
     () => {
       return textResult({
@@ -131,7 +131,7 @@ export function createSuprMcpServer(): McpServer {
 
   server.tool(
     "supr_get_component",
-    "Get the full contract for one Supr UI component: props, web usage (@mrtechnology/ui), native usage (@mrtechnology/ui-native), and notes. Prop names are the contract — do not invent extra props.",
+    "Get the full contract for one Supr UI component: props, web usage (@suprui/ui), native usage (@suprui/ui-native), and notes. Prop names are the contract — do not invent extra props.",
     {
       name: z.string().min(1).describe("Component name, e.g. Button"),
     },

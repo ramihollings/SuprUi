@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "@mrtechnology/ui": "^0.1.0",
+    "@suprui/ui": "^0.1.0",
     "lucide-react": "^1.72.0",
     "react": "^19",
     "react-dom": "^19"
   },
-  "description": "Supr UI Storybook workshop — web components only (@mrtechnology/ui). Dark default, light via the theme toolbar; axe runs in every story via @storybook/addon-a11y.",
+  "description": "Supr UI Storybook workshop — web components only (@suprui/ui). Dark default, light via the theme toolbar; axe runs in every story via @storybook/addon-a11y.",
   "devDependencies": {
     "@playwright/test": "^1.65.0",
     "@storybook/addon-a11y": "^10.6.7",
@@ -22,7 +22,7 @@
     "vite": "^7.0.0"
   },
   "license": "MIT",
-  "name": "@mrtechnology/storybook",
+  "name": "@suprui/storybook",
   "private": true,
   "scripts": {
     "build-storybook": "storybook build",

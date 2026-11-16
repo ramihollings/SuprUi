@@ -9,7 +9,7 @@
  */
 import { createContext, useContext } from 'react';
 import type { ReactNode } from 'react';
-import { theme } from '@mrtechnology/tokens/native';
+import { theme } from '@suprui/tokens/native';
 import type {
   SuprTheme,
   Theme,
@@ -20,7 +20,7 @@ import type {
   ThemeSpacing,
   ThemeSpring,
   ThemeTypography,
-} from '@mrtechnology/tokens/native';
+} from '@suprui/tokens/native';
 
 export { theme };
 export type {

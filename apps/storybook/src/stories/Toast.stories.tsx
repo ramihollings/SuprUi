@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button, Toaster, toast, type ToastVariant } from "@mrtechnology/ui";
+import { Button, Toaster, toast, type ToastVariant } from "@suprui/ui";
 
 const meta: Meta = {
   title: "Components/Toast",

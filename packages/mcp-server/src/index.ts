@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * @mrtechnology/mcp-server entry point — stdio transport.
+ * @suprui/mcp-server entry point — stdio transport.
  *
- * Run: `npm start --workspace=@mrtechnology/mcp-server`
+ * Run: `npm start --workspace=@suprui/mcp-server`
  * (or `node packages/mcp-server/dist/index.js` from the repo root).
- * Requires @mrtechnology/tokens to be built first (`npm run build` at the root).
+ * Requires @suprui/tokens to be built first (`npm run build` at the root).
  */
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { createSuprMcpServer } from "./server.js";

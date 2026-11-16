@@ -18,7 +18,7 @@ description: Controlled modal dialog with a title, optional description, body co
 
 ```tsx
 import { useState } from "react";
-import { Button, Dialog } from "@mrtechnology/ui";
+import { Button, Dialog } from "@suprui/ui";
 
 const [open, setOpen] = useState(false);
 
@@ -51,7 +51,7 @@ const [open, setOpen] = useState(false);
 ```tsx
 import { useState } from "react";
 import { Text } from "react-native";
-import { Button, Dialog } from "@mrtechnology/ui-native";
+import { Button, Dialog } from "@suprui/ui-native";
 
 const [open, setOpen] = useState(false);
 

@@ -1,7 +1,7 @@
 {
-  "name": "@mrtechnology/ui",
+  "name": "@suprui/ui",
   "version": "0.1.0",
-  "description": "Supr UI — black + cobalt web components for Supr. shadcn-style ownable components on Base UI primitives, Tailwind v4, shared @mrtechnology/tokens.",
+  "description": "Supr UI — black + cobalt web components for Supr. shadcn-style ownable components on Base UI primitives, Tailwind v4, shared @suprui/tokens.",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
-    "@mrtechnology/tokens": "^0.1.0",
+    "@suprui/tokens": "^0.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.72.0",

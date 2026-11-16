@@ -16,10 +16,10 @@ backgrounds, cobalt accent, hairline borders, spring motion.
 
 ```bash
 # Web
-npm i @mrtechnology/ui @mrtechnology/tokens
+npm i @suprui/ui @suprui/tokens
 
-# Android (React Native) — @mrtechnology/ui-native instead of @mrtechnology/ui
-npm i @mrtechnology/ui-native @mrtechnology/tokens
+# Android (React Native) — @suprui/ui-native instead of @suprui/ui
+npm i @suprui/ui-native @suprui/tokens
 ```
 
 ## Quick usage (web)
@@ -29,11 +29,11 @@ no theme setup is needed for the default look.
 
 ```css
 /* e.g. in your global stylesheet */
-@import "@mrtechnology/tokens/web.css";
+@import "@suprui/tokens/web.css";
 ```
 
 ```tsx
-import { Button } from "@mrtechnology/ui";
+import { Button } from "@suprui/ui";
 
 export function Example() {
   return (
@@ -51,7 +51,7 @@ export function Example() {
 
 - **Default: dark.** Black backgrounds, cobalt accent.
 - **Light theme (web):** set `data-theme="light"` on the root element.
-- **Light theme (native):** use `theme.light` from `@mrtechnology/tokens/native`
+- **Light theme (native):** use `theme.light` from `@suprui/tokens/native`
   (see below) instead of the default dark theme.
 
 The theme is a token swap, not a rebuild: colors, radius, spacing, and
@@ -61,11 +61,11 @@ motion values live in the shared tokens, and components read them.
 
 Tokens are the single source of truth, authored in W3C format (edited in
 Figma via Tokens Studio) and built with Style Dictionary into each
-platform's format. The token package is `@mrtechnology/tokens`:
+platform's format. The token package is `@suprui/tokens`:
 
-- Web: `@mrtechnology/tokens/web.css` — CSS variables, mapped into Tailwind v4
+- Web: `@suprui/tokens/web.css` — CSS variables, mapped into Tailwind v4
   via `@theme`.
-- Native: `{ theme }` from `@mrtechnology/tokens/native`.
+- Native: `{ theme }` from `@suprui/tokens/native`.
 
 Token categories (see `AGENTS.md` for the full token contract; tokens
 themselves live in `packages/tokens`):
@@ -88,7 +88,7 @@ themselves live in `packages/tokens`):
   `snappy { stiffness 400, damping 30 }`.
 
 Native mirrors these as `theme.dark` / `theme.light` from
-`@mrtechnology/tokens/native` (`colors`, `spacing`, `radii`, `borderWidth`,
+`@suprui/tokens/native` (`colors`, `spacing`, `radii`, `borderWidth`,
 `typography`, `motion`). Never hard-code `#1456F0` or any raw hex,
 spacing, or duration in a component — use a semantic token.
 
@@ -104,16 +104,16 @@ added the docs site (`apps/docs`), the MCP server
 
 | Component | Web | Native | Notes |
 | --- | --- | --- | --- |
-| `Button` | `@mrtechnology/ui` | `@mrtechnology/ui-native` | Variants `primary`/`secondary`/`outline`/`ghost`/`danger`; sizes `sm`/`md`/`lg`; `disabled`, `children`, `icon?` (Lucide) |
-| `Input` | `@mrtechnology/ui` | `@mrtechnology/ui-native` | `label?`, `placeholder`, `value`, `onChange` / `onChangeText`, `error?`, `disabled`, `size` |
-| `Dialog` | `@mrtechnology/ui` | `@mrtechnology/ui-native` | `open`, `onOpenChange`, `title`, `description`, `children`, `actions` |
-| `Popover` | `@mrtechnology/ui` | `@mrtechnology/ui-native` | `trigger`, `content`, `open`, `onOpenChange`, `side`, `align` |
-| `Select` | `@mrtechnology/ui` | `@mrtechnology/ui-native` | `options` (`{ label, value }[]`), `value`, `onValueChange`, `placeholder`, `label?`, `disabled` |
-| `Tabs` | `@mrtechnology/ui` | `@mrtechnology/ui-native` | Compound `Tabs` / `TabsList` / `TabsTrigger` / `TabsContent`; `value`, `onValueChange` |
-| `Toast` | `@mrtechnology/ui` | `@mrtechnology/ui-native` | `toast({ title, description, variant })` + `<Toaster />` |
-| `Card` | `@mrtechnology/ui` | `@mrtechnology/ui-native` | Compound `Card` / `CardHeader` / `CardTitle` / `CardDescription` / `CardContent` / `CardFooter` |
-| `Avatar` | `@mrtechnology/ui` | `@mrtechnology/ui-native` | `src?`, `fallback`, size `sm`/`md`/`lg`, `alt` |
-| `Switch` | `@mrtechnology/ui` | `@mrtechnology/ui-native` | `checked`, `onCheckedChange`, `label?`, `disabled` |
+| `Button` | `@suprui/ui` | `@suprui/ui-native` | Variants `primary`/`secondary`/`outline`/`ghost`/`danger`; sizes `sm`/`md`/`lg`; `disabled`, `children`, `icon?` (Lucide) |
+| `Input` | `@suprui/ui` | `@suprui/ui-native` | `label?`, `placeholder`, `value`, `onChange` / `onChangeText`, `error?`, `disabled`, `size` |
+| `Dialog` | `@suprui/ui` | `@suprui/ui-native` | `open`, `onOpenChange`, `title`, `description`, `children`, `actions` |
+| `Popover` | `@suprui/ui` | `@suprui/ui-native` | `trigger`, `content`, `open`, `onOpenChange`, `side`, `align` |
+| `Select` | `@suprui/ui` | `@suprui/ui-native` | `options` (`{ label, value }[]`), `value`, `onValueChange`, `placeholder`, `label?`, `disabled` |
+| `Tabs` | `@suprui/ui` | `@suprui/ui-native` | Compound `Tabs` / `TabsList` / `TabsTrigger` / `TabsContent`; `value`, `onValueChange` |
+| `Toast` | `@suprui/ui` | `@suprui/ui-native` | `toast({ title, description, variant })` + `<Toaster />` |
+| `Card` | `@suprui/ui` | `@suprui/ui-native` | Compound `Card` / `CardHeader` / `CardTitle` / `CardDescription` / `CardContent` / `CardFooter` |
+| `Avatar` | `@suprui/ui` | `@suprui/ui-native` | `src?`, `fallback`, size `sm`/`md`/`lg`, `alt` |
+| `Switch` | `@suprui/ui` | `@suprui/ui-native` | `checked`, `onCheckedChange`, `label?`, `disabled` |
 
 Full per-component props, variants, and examples live in Storybook
 (`apps/storybook`).
@@ -121,8 +121,8 @@ Full per-component props, variants, and examples live in Storybook
 ## Native usage
 
 ```tsx
-import { Button } from "@mrtechnology/ui-native";
-import { theme } from "@mrtechnology/tokens/native";
+import { Button } from "@suprui/ui-native";
+import { theme } from "@suprui/tokens/native";
 
 // theme.dark is the default; pass theme.light for the light theme.
 export function Example() {
@@ -141,8 +141,10 @@ platform-specific props differ where the contract says so
 
 Two ways to get Supr UI (D7, hosting decided in M2):
 
-- **npm** — versioned packages `@mrtechnology/ui`, `@mrtechnology/ui-native`, `@mrtechnology/tokens`,
-  published 2026-11-14 under the public `@mrtechnology` scope, all 0.1.0. Install-verified.
+- **npm** — versioned packages `@suprui/ui`, `@suprui/ui-native`, `@suprui/tokens`,
+  0.1.0 published 2026-11-14 under `@mrtechnology`; migrating to `@suprui`
+  (D26), publish pending an npm org + token. Install-verified under
+  `@mrtechnology`.
 - **Registry** — copy-paste via the shadcn-style registry in
   `registry.json` (23 items; `name: supr-ui`, homepage
   <https://supr.technology>), statically hosted (suggested host
@@ -154,7 +156,7 @@ Two ways to get Supr UI (D7, hosting decided in M2):
 
 ```
 .
-├── decisions.md        # The decisions (D1–D25) behind this system — read first
+├── decisions.md        # The decisions (D1–D26) behind this system — read first
 ├── AGENTS.md           # Agent interface: how AI agents build with Supr UI correctly
 ├── LICENSE             # MIT
 ├── NOTICE              # Third-party attributions
@@ -166,9 +168,9 @@ Two ways to get Supr UI (D7, hosting decided in M2):
 ├── scripts/            # Repo scripts (contrast audit, registry build/validate)
 ├── packages/
 │   ├── tokens/         # Shared W3C tokens (Style Dictionary + Tokens Studio)
-│   ├── web/            # @mrtechnology/ui — web components (shadcn/ui + Base UI + Tailwind v4)
-│   ├── native/         # @mrtechnology/ui-native — Android components (NativeWind + RNR)
-│   └── mcp-server/     # @mrtechnology/mcp-server — MCP server (stdio; 5 tools + 3 resources)
+│   ├── web/            # @suprui/ui — web components (shadcn/ui + Base UI + Tailwind v4)
+│   ├── native/         # @suprui/ui-native — Android components (NativeWind + RNR)
+│   └── mcp-server/     # @suprui/mcp-server — MCP server (stdio; 5 tools + 3 resources)
 ├── apps/
 │   ├── storybook/      # Component workshop (Storybook + axe a11y addon)
 │   ├── docs/           # Starlight docs site

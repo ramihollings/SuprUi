@@ -28,7 +28,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@mrtechnology/ui";
+} from "@suprui/ui";
 
 <Card>
   <CardHeader>
@@ -58,7 +58,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@mrtechnology/ui-native";
+} from "@suprui/ui-native";
 
 <Card>
   <CardHeader>

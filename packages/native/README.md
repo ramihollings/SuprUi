@@ -1,8 +1,8 @@
-# @mrtechnology/ui-native
+# @suprui/ui-native
 
 Supr UI for Android — the black + cobalt design language as React Native
-components. Same export names as `@mrtechnology/ui` (web), same token source of
-truth (`@mrtechnology/tokens`). Dark-first; light works too.
+components. Same export names as `@suprui/ui` (web), same token source of
+truth (`@suprui/tokens`). Dark-first; light works too.
 
 > **Code-verified only — no device, no on-device rendering verified.**
 > This package was verified with `tsc` and Vitest + React Native Testing
@@ -13,7 +13,7 @@ truth (`@mrtechnology/tokens`). Dark-first; light works too.
 ## Install
 
 ```bash
-npm install @mrtechnology/ui-native @mrtechnology/tokens
+npm install @suprui/ui-native @suprui/tokens
 ```
 
 Peer dependencies (installed by the consuming app): `react ^19`,
@@ -31,7 +31,7 @@ Peer dependencies (installed by the consuming app): `react ^19`,
 ## Usage
 
 ```tsx
-import { ThemeProvider, Button, Input, Toaster, toast } from '@mrtechnology/ui-native';
+import { ThemeProvider, Button, Input, Toaster, toast } from '@suprui/ui-native';
 import { PortalHost } from '@rn-primitives/portal';
 
 export default function App() {
@@ -64,7 +64,7 @@ raw values. Dark is the default; opt into light once at the root:
 
 `useTheme()` returns `theme.dark` by default and `theme.light` inside a
 light provider. The `theme` object and its types are re-exported from
-`@mrtechnology/tokens/native` (`theme.dark` / `theme.light`).
+`@suprui/tokens/native` (`theme.dark` / `theme.light`).
 
 ## NativeWind setup (consumer screens)
 
@@ -97,7 +97,7 @@ module.exports = withNativeWind(config, { input: './global.css' });
 
 ```tsx
 // App entry point
-import '@mrtechnology/ui-native/global.css';
+import '@suprui/ui-native/global.css';
 ```
 
 Copy `tailwind.config.js` from this package into the app (or merge its
@@ -186,7 +186,7 @@ tabs (3), toast (3), card (1), avatar (3), switch (3). `tsc --noEmit`
 clean; `npm run build` succeeds and emits `dist/` (`index.js` /
 `index.d.ts`, `theme.*`, `components/*`).
 
-`import { theme } from "@mrtechnology/tokens/native"` is asserted in
+`import { theme } from "@suprui/tokens/native"` is asserted in
 `test/theme.test.tsx` (dark/light values for background, surface,
 border, text, brand, danger, success, warning, spacing, radii,
 typography, motion).

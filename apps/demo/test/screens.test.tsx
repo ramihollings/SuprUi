@@ -6,7 +6,7 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react-native';
 import { Text, View } from 'react-native';
-import { ThemeProvider } from '@mrtechnology/ui-native';
+import { ThemeProvider } from '@suprui/ui-native';
 import { ButtonScreen } from '../src/screens/showcases';
 
 describe('demo screens', () => {

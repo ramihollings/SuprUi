@@ -7,7 +7,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@mrtechnology/ui";
+} from "@suprui/ui";
 
 const meta: Meta<typeof Card> = {
   title: "Components/Card",

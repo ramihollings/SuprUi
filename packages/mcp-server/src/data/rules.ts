@@ -24,7 +24,7 @@ export const GUIDANCE: GuidanceSection[] = [
       "Tokens live in packages/tokens/ and are built by Style Dictionary from tokens/*.json (W3C DTCG). Never edit generated token output by hand; edit the token source and rebuild.",
       "Never put a raw hex, raw rgb, literal pixel spacing/radius, or literal duration in a component — use a semantic token. If the value you need has no token, add a token in packages/tokens/; do not inline it.",
       "The brand color lives in exactly one token (--color-brand / theme.colors.brand). Do not hard-code it anywhere else.",
-      "Web: import tokens once at the app root with @import \"@mrtechnology/tokens/web.css\". Native: import { theme } from \"@mrtechnology/tokens/native\"; theme.dark is the default, theme.light is the light theme.",
+      "Web: import tokens once at the app root with @import \"@suprui/tokens/web.css\". Native: import { theme } from \"@suprui/tokens/native\"; theme.dark is the default, theme.light is the light theme.",
       "The native colors object has no focus entry — the web --color-focus variable has no native counterpart. Do not invent one.",
     ],
   },
@@ -34,7 +34,7 @@ export const GUIDANCE: GuidanceSection[] = [
     rules: [
       "Dark is the default on both platforms. Ship dark first; light must also work, not just exist.",
       "Web: light theme via data-theme=\"light\" on the root element. Dark is the default when the attribute is absent.",
-      "Native: use theme.light instead of theme.dark from @mrtechnology/tokens/native.",
+      "Native: use theme.light instead of theme.dark from @suprui/tokens/native.",
       "Never theme by swapping hex values in a component. Theme by switching the token set.",
     ],
   },

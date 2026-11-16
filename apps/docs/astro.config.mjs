@@ -3,7 +3,7 @@ import starlight from "@astrojs/starlight";
 
 // Supr UI docs — Astro + Starlight (decision D8).
 // Brand styling lives in src/styles/custom.css, which maps Starlight's
-// CSS variables onto the @mrtechnology/tokens variables. No literal color,
+// CSS variables onto the @suprui/tokens variables. No literal color,
 // spacing, radius, or duration values appear in this file or in the
 // custom stylesheet — tokens are the only source of truth.
 export default defineConfig({

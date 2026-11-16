@@ -42,7 +42,7 @@ function rnBabelPlugin(): Plugin {
       const isPrimitive =
         id.includes('node_modules/@rn-primitives/') &&
         (id.endsWith('.js') || id.endsWith('.mjs'));
-      // @mrtechnology/ui-native resolves (via the workspace symlink) to
+      // @suprui/ui-native resolves (via the workspace symlink) to
       // packages/native/dist/, whose .js files still contain raw JSX:
       // the native package compiles with tsc + jsx: react-native, which
       // preserves JSX. Metro/Babel transform that fine in the app, but

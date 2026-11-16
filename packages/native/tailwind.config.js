@@ -5,7 +5,7 @@
  * Copy this file into the consuming app as `tailwind.config.js` (or
  * merge its `theme.extend` into the app's own config) and point its
  * `content` at the app's source. It maps the Supr token variables
- * (from `@mrtechnology/tokens/web.css`, imported by `src/global.css`) to
+ * (from `@suprui/tokens/web.css`, imported by `src/global.css`) to
  * Tailwind utilities: `bg-background`, `text-text-muted`,
  * `border-border`, `bg-brand`, `rounded-rounded`, `text-xs`, …
  * No hex or pixel literal appears here — every value is a `var()`

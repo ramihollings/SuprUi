@@ -6,7 +6,7 @@
  * Dark is the default theme; the header toggle switches to light.
  *
  * `<PortalHost />` (Dialog / Popover / Select overlays) and `<Toaster />`
- * are mounted once here, at the app root, as @mrtechnology/ui-native requires.
+ * are mounted once here, at the app root, as @suprui/ui-native requires.
  * All styling comes from the token theme object — no raw values.
  */
 import { useState } from 'react';
@@ -14,8 +14,8 @@ import { Pressable, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Moon, Sun } from 'lucide-react-native';
 import { PortalHost } from '@rn-primitives/portal';
-import { ThemeProvider, Toaster, fontWeight, useTheme } from '@mrtechnology/ui-native';
-import type { ThemeMode } from '@mrtechnology/ui-native';
+import { ThemeProvider, Toaster, fontWeight, useTheme } from '@suprui/ui-native';
+import type { ThemeMode } from '@suprui/ui-native';
 import { HomeScreen } from './src/screens/HomeScreen';
 import type { ComponentId } from './src/screens/HomeScreen';
 import { SHOWCASES } from './src/screens/showcases';

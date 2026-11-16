@@ -21,7 +21,7 @@ toast({ title, description?, variant? });
 ## Web
 
 ```tsx
-import { Button, Toaster, toast } from "@mrtechnology/ui";
+import { Button, Toaster, toast } from "@suprui/ui";
 
 function App() {
   return (
@@ -41,7 +41,7 @@ function App() {
 ## Native
 
 ```tsx
-import { Button, Toaster, toast } from "@mrtechnology/ui-native";
+import { Button, Toaster, toast } from "@suprui/ui-native";
 
 function App() {
   return (

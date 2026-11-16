@@ -73,4 +73,4 @@ const files = await listDist(path.join(packageDir, 'dist'));
 for (const { rel, size } of files.sort((a, b) => a.rel.localeCompare(b.rel))) {
   console.log(`  dist/${rel} (${size} bytes)`);
 }
-console.log('@mrtechnology/tokens build complete.');
+console.log('@suprui/tokens build complete.');

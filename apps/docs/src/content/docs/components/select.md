@@ -18,7 +18,7 @@ description: Controlled dropdown for choosing one option from a list. Options ar
 
 ```tsx
 import { useState } from "react";
-import { Select } from "@mrtechnology/ui";
+import { Select } from "@suprui/ui";
 
 const [space, setSpace] = useState<string | null>(null);
 
@@ -39,7 +39,7 @@ const [space, setSpace] = useState<string | null>(null);
 
 ```tsx
 import { useState } from "react";
-import { Select } from "@mrtechnology/ui-native";
+import { Select } from "@suprui/ui-native";
 
 const [space, setSpace] = useState("");
 

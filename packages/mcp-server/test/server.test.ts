@@ -1,12 +1,12 @@
 /**
- * @mrtechnology/mcp-server smoke tests.
+ * @suprui/mcp-server smoke tests.
  *
  * Covers: server starts, tools/list exposes the 5 tools, tool calls
  * return real repo data (cobalt token from the real token source),
  * resources are listable/readable, and the built stdio binary answers
  * a real JSON-RPC tools/list over stdin/stdout.
  *
- * Run: `npm test --workspace=@mrtechnology/mcp-server` (builds first).
+ * Run: `npm test --workspace=@suprui/mcp-server` (builds first).
  */
 import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
 import { fileURLToPath } from "node:url";
@@ -59,10 +59,10 @@ describe("supr-ui MCP server (in-process)", () => {
     const data = parseText(result) as { source: string; path: string; value: unknown };
     // Brand hex, confirmed from supr.technology's stylesheet (2026-11-13).
     // Asserted here as a test expectation only — the value itself lives
-    // in tokens/color.json and is read through @mrtechnology/tokens, never copied.
+    // in tokens/color.json and is read through @suprui/tokens, never copied.
     expect(data.value).toBe("#1456F0");
     expect(data.path).toBe("color.cobalt.500");
-    expect(data.source).toContain("@mrtechnology/tokens");
+    expect(data.source).toContain("@suprui/tokens");
   });
 
   it("supr_get_token resolves semantic theme tokens and errors on unknown paths", async () => {
@@ -136,10 +136,10 @@ describe("supr-ui MCP server (in-process)", () => {
       "ghost",
       "danger",
     ]);
-    expect(data.web.importFrom).toBe("@mrtechnology/ui");
-    expect(data.web.usage).toContain('from "@mrtechnology/ui"');
-    expect(data.native.importFrom).toBe("@mrtechnology/ui-native");
-    expect(data.native.usage).toContain('from "@mrtechnology/ui-native"');
+    expect(data.web.importFrom).toBe("@suprui/ui");
+    expect(data.web.usage).toContain('from "@suprui/ui"');
+    expect(data.native.importFrom).toBe("@suprui/ui-native");
+    expect(data.native.usage).toContain('from "@suprui/ui-native"');
   });
 
   it("supr_get_component errors on an unknown component", async () => {

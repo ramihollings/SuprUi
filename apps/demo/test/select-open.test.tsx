@@ -6,7 +6,7 @@
 import { describe, expect, it } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { PortalHost } from '@rn-primitives/portal';
-import { ThemeProvider } from '@mrtechnology/ui-native';
+import { ThemeProvider } from '@suprui/ui-native';
 import { SelectScreen } from '../src/screens/showcases';
 
 async function renderSelect() {

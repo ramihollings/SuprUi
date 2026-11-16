@@ -6,7 +6,7 @@ description: Install Supr UI for web (React) or Android (React Native), and wire
 ## Web
 
 ```bash
-npm install @mrtechnology/ui @mrtechnology/tokens
+npm install @suprui/ui @suprui/tokens
 ```
 
 Peer dependencies: `react ^19`, `react-dom ^19`. Runtime dependencies ship
@@ -19,7 +19,7 @@ token CSS variables, and maps tokens to utilities (`bg-background`,
 
 ```css
 /* src/index.css */
-@import "@mrtechnology/ui/styles.css";
+@import "@suprui/ui/styles.css";
 ```
 
 If you use PostCSS, this package ships a `postcss.config.json` wiring
@@ -30,13 +30,13 @@ If your app does not use Tailwind, import the token variables directly
 instead — the components' classes still resolve through them:
 
 ```css
-@import "@mrtechnology/tokens/web.css";
+@import "@suprui/tokens/web.css";
 ```
 
 ## Android (React Native)
 
 ```bash
-npm install @mrtechnology/ui-native @mrtechnology/tokens
+npm install @suprui/ui-native @suprui/tokens
 ```
 
 Peer dependencies (installed by the consuming app): `react ^19`,
@@ -44,7 +44,7 @@ Peer dependencies (installed by the consuming app): `react ^19`,
 `react-native-worklets 0.8.x`, `tailwindcss ^3.4.0`.
 
 ```tsx
-import { ThemeProvider, Button, Input, Toaster, toast } from "@mrtechnology/ui-native";
+import { ThemeProvider, Button, Input, Toaster, toast } from "@suprui/ui-native";
 import { PortalHost } from "@rn-primitives/portal";
 
 export default function App() {
@@ -99,7 +99,7 @@ module.exports = withNativeWind(config, { input: "./global.css" });
 
 ```tsx
 // App entry point
-import "@mrtechnology/ui-native/global.css";
+import "@suprui/ui-native/global.css";
 ```
 
 Copy `tailwind.config.js` from the package into the app (or merge its

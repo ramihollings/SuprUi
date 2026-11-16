@@ -4,7 +4,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.2",
-    "@mrtechnology/tokens": "^0.1.0",
+    "@suprui/tokens": "^0.1.0",
     "zod": "^3.25.0"
   },
   "description": "Supr UI MCP server \u2014 exposes Supr UI design tokens, the 10 components, and usage guidance to AI agents over stdio.",
@@ -21,7 +21,7 @@
   ],
   "license": "MIT",
   "main": "./dist/index.js",
-  "name": "@mrtechnology/mcp-server",
+  "name": "@suprui/mcp-server",
   "private": true,
   "scripts": {
     "build": "tsc -p tsconfig.build.json",

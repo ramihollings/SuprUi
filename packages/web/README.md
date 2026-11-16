@@ -1,15 +1,15 @@
-# @mrtechnology/ui
+# @suprui/ui
 
 Supr UI web components — black + cobalt, dark-first. shadcn-style ownable
 components built on [Base UI](https://base-ui.com) primitives, styled with
-Tailwind v4 and the shared `@mrtechnology/tokens` token set. MIT licensed.
+Tailwind v4 and the shared `@suprui/tokens` token set. MIT licensed.
 
-> Cobalt primary `#1456F0` (confirmed from supr.technology's stylesheet, 2026-11-13). It lives in one token in `@mrtechnology/tokens` (`tokens/color.json`); it is never hard-coded in this package.
+> Cobalt primary `#1456F0` (confirmed from supr.technology's stylesheet, 2026-11-13). It lives in one token in `@suprui/tokens` (`tokens/color.json`); it is never hard-coded in this package.
 
 ## Install
 
 ```bash
-npm install @mrtechnology/ui @mrtechnology/tokens
+npm install @suprui/ui @suprui/tokens
 ```
 
 Peer dependencies: `react ^19`, `react-dom ^19`. Runtime dependencies are
@@ -24,7 +24,7 @@ token CSS variables, and maps tokens to utilities (`bg-background`,
 
 ```css
 /* src/index.css */
-@import "@mrtechnology/ui/styles.css";
+@import "@suprui/ui/styles.css";
 ```
 
 If you use PostCSS, this package ships `postcss.config.json` wiring
@@ -34,7 +34,7 @@ works the same way if your app is Vite-based — the CSS itself is identical).
 ## Usage
 
 ```tsx
-import { Button, Dialog, Input, Toaster, toast } from "@mrtechnology/ui";
+import { Button, Dialog, Input, Toaster, toast } from "@suprui/ui";
 
 function App() {
   return (
@@ -78,7 +78,7 @@ is 200ms, `duration-fast` 120ms, `duration-slow` 320ms).
 | `Avatar` | `src?`, `fallback`, `size`: sm / md / lg, `alt`. Fallback shows when `src` is absent or fails to load. |
 | `Switch` | `checked`, `onCheckedChange`, `label?`, `disabled?`. |
 
-Export names are identical to the native package (`@mrtechnology/ui-native`) — the
+Export names are identical to the native package (`@suprui/ui-native`) — the
 same component, same props, on both platforms.
 
 ## Accessibility
@@ -118,7 +118,7 @@ Two environment notes, verified 2026-11-13:
   the standalone v4 CLI lives in the separate `@tailwindcss/cli` package
   (not installed). The check above was run through the installed
   `@tailwindcss/postcss` plugin instead, with identical output.
-- `@import "@mrtechnology/tokens/web.css"` resolves in exports-aware tooling
+- `@import "@suprui/tokens/web.css"` resolves in exports-aware tooling
   (Node, Vite), but `postcss-import` (used by the Tailwind CLI and
   `@tailwindcss/postcss`) resolves with `resolve@1.22`, which does not
   honour the tokens package's `exports` map for that subpath — the tokens

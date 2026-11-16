@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@mrtechnology/tokens/web.css";
+@import "@suprui/tokens/web.css";
 
 @layer base {
   body {

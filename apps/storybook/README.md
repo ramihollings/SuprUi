@@ -1,7 +1,7 @@
 # Supr UI — Storybook
 
-Storybook workshop for the **web** package only (`@mrtechnology/ui`). Native
-(`@mrtechnology/ui-native`) is out of scope here — Storybook is web-only in
+Storybook workshop for the **web** package only (`@suprui/ui`). Native
+(`@suprui/ui-native`) is out of scope here — Storybook is web-only in
 Milestone 1.
 
 ## Run
@@ -9,7 +9,7 @@ Milestone 1.
 ```bash
 # from the repo root (installs + links the workspace packages)
 npm install
-npm run storybook --workspace=@mrtechnology/storybook
+npm run storybook --workspace=@suprui/storybook
 # or: cd apps/storybook && npm run storybook
 ```
 
@@ -18,7 +18,7 @@ Opens the workshop at http://localhost:6006.
 ## Build
 
 ```bash
-npm run build-storybook --workspace=@mrtechnology/storybook
+npm run build-storybook --workspace=@suprui/storybook
 ```
 
 The production build is the Milestone 1 gate: it must exit 0. Output goes
@@ -26,7 +26,7 @@ to `apps/storybook/storybook-static/`.
 
 ## Stories ↔ components
 
-Every story imports the real component from `@mrtechnology/ui` (workspace
+Every story imports the real component from `@suprui/ui` (workspace
 dependency, resolved to `packages/web/dist/`). No component code is copied
 into this app.
 
@@ -60,10 +60,10 @@ A violation fails the check — fix it, do not suppress it.
 
 Stories use token-mapped Tailwind utilities only (`bg-background`,
 `text-text-muted`, `gap-4`, …) — no raw hex, spacing, or durations.
-The stylesheet (`src/index.css`) imports `@mrtechnology/ui/styles.css`, which
-pulls in Tailwind v4 and the `@mrtechnology/tokens` CSS variables; the
+The stylesheet (`src/index.css`) imports `@suprui/ui/styles.css`, which
+pulls in Tailwind v4 and the `@suprui/tokens` CSS variables; the
 `@tailwindcss/vite` plugin is wired in `.storybook/main.ts` (`viteFinal`).
-Because the component classes live in `@mrtechnology/ui`'s built output
+Because the component classes live in `@suprui/ui`'s built output
 (`packages/web/dist/`, gitignored and therefore not auto-scanned by
 Tailwind v4), `src/index.css` also carries an explicit
 `@source "../../../packages/web/dist";` so every class the real

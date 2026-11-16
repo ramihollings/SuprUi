@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@mrtechnology/ui";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@suprui/ui";
 
 const meta: Meta<typeof Tabs> = {
   title: "Components/Tabs",
