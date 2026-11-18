@@ -120,6 +120,14 @@ describe('@suprui/tokens contract', () => {
     expect(theme.dark.typography.fontFamily).toContain('system-ui');
   });
 
+  it('Supr web font stacks align with the live site without changing native fallback', () => {
+    expect(tokens.typography.fontFamilyWeb).toContain('Plus Jakarta Sans');
+    expect(tokens.typography.fontFamilyMono).toContain('JetBrains Mono');
+    expect(webCss).toContain("--font-sans: 'Plus Jakarta Sans'");
+    expect(webCss).toContain("--font-mono: 'JetBrains Mono'");
+    expect(theme.dark.typography.fontFamily).toContain('system-ui');
+  });
+
   it('motion durations and springs resolve', () => {
     expect(theme.dark.motion.durationFast).toBe(120);
     expect(theme.dark.motion.durationBase).toBe(200);

@@ -12,6 +12,7 @@ const meta: Meta<typeof Button> = {
       options: ["primary", "secondary", "outline", "ghost", "danger"],
     },
     size: { control: "select", options: ["sm", "md", "lg"] },
+    shape: { control: "select", options: ["control", "pill"] },
   },
 };
 
@@ -72,5 +73,16 @@ export const WithIcon: Story = {
 export const IconOnly: Story = {
   render: () => (
     <Button aria-label="Search" icon={<Search aria-hidden="true" />} />
+  ),
+};
+
+/** The Supr public site uses pill CTAs; workspace controls keep their compact shape. */
+export const WebsiteCTAs: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center gap-3">
+      <Button shape="pill" size="lg">Request access</Button>
+      <Button shape="pill" size="lg" variant="outline">Explore products</Button>
+      <Button size="md">Workspace action</Button>
+    </div>
   ),
 };
