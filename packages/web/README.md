@@ -63,6 +63,19 @@ utilities (`bg-surface`, `text-text`, `border-border`, `bg-brand`,
 `text-danger`, …). Motion durations come from tokens too (`duration-base`
 is 200ms, `duration-fast` 120ms, `duration-slow` 320ms).
 
+## Supr website alignment
+
+Supr's live site uses **Plus Jakarta Sans** for UI text and **JetBrains Mono** for technical labels, pure black (`#000000`), and the canonical cobalt (`#1456F0`). The generated token stylesheet defines `--font-sans` and `--font-mono`; the consuming application must self-host or load those fonts. The library **does not** fetch remote font assets. System and monospace fallbacks work when fonts are unavailable.
+
+Use `shape="pill"` for public-site CTAs, while the default `shape="control"` retains the 8px radius appropriate for dense SuprOS, SuprCMS, and SuprInbox workspaces:
+
+```tsx
+<Button shape="pill" size="lg">Request access</Button>
+<Button variant="secondary">Review revision</Button>
+```
+
+The `shape` prop is available in both web and React Native Buttons. Cloudflare's dashboard conventions inform shared tokens, accessible focus states, restrained surfaces, and 4px spacing; Supr retains its own colors, fonts, and brand assets. See [BRAND-ALIGNMENT.md](../../BRAND-ALIGNMENT.md).
+
 ## Components
 
 | Component | Description |

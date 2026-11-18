@@ -12,6 +12,12 @@ describe("Button", () => {
     expect(button.className).toContain("bg-brand");
   });
 
+  it("retains compact controls while supporting site-style pill CTAs", () => {
+    render(<><Button>Save</Button><Button shape="pill">Request access</Button></>);
+    expect(screen.getByRole("button", { name: "Save" }).className).toContain("rounded-rounded");
+    expect(screen.getByRole("button", { name: "Request access" }).className).toContain("rounded-circular");
+  });
+
   it("renders the icon before the label", () => {
     render(
       <Button icon={<Plus data-testid="plus-icon" />}>Add</Button>,

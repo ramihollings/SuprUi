@@ -127,7 +127,10 @@ StyleDictionary.registerFormat({
       (name) => `  --motion-duration-${name}: ${val(all, 'motion', 'duration', name)};`,
     ).join('\n');
     const ease = `  --motion-ease-out: ${val(all, 'motion', 'easing', 'ease-out')};`;
-    const fontStack = `  --font-sans: ${val(all, 'typography', 'fontFamily')};`;
+    const fontStack = [
+      `  --font-sans: ${val(all, 'typography', 'fontFamilyWeb')};`,
+      `  --font-mono: ${val(all, 'typography', 'fontFamilyMono')};`,
+    ].join('\n');
     const typeVars = TYPE_SIZES.map(
       (size) =>
         `  --font-size-${size}: ${val(all, 'typography', 'size', size, 'fontSize')};\n` +
@@ -164,7 +167,8 @@ StyleDictionary.registerFormat({
       ...TYPE_WEIGHTS.map(
         (weight) => `  --font-weight-${weight}: ${val(all, 'typography', 'weight', weight)};`,
       ),
-      `  --font-sans: ${val(all, 'typography', 'fontFamily')};`,
+      `  --font-sans: ${val(all, 'typography', 'fontFamilyWeb')};`,
+      `  --font-mono: ${val(all, 'typography', 'fontFamilyMono')};`,
     ].join('\n');
 
     return (

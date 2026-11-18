@@ -12,6 +12,10 @@ backgrounds, cobalt accent, hairline borders, spring motion.
 > **Brand color — confirmed 2026-11-13:** the cobalt primary is `#1456F0`, taken from supr.technology's stylesheet.
 > See `decisions.md` (D12).
 
+## Supr website design alignment
+
+The live site's identity is the source of truth: pure black, cobalt `#1456F0`, Plus Jakarta Sans for UI copy, JetBrains Mono for technical labels, and pill-shaped public-facing CTAs. The shared workspace defaults stay compact and accessible: 8px controls, subtle borders, 4px spacing, visible keyboard focus. Use `<Button shape="pill">` for marketing CTAs; the default is `shape="control"`. Fonts are not downloaded by the package; consumers supply font assets. See [BRAND-ALIGNMENT.md](BRAND-ALIGNMENT.md) and the Storybook `WebsiteCTAs` example.
+
 ## Install
 
 ```bash
@@ -142,9 +146,9 @@ platform-specific props differ where the contract says so
 Two ways to get Supr UI (D7, hosting decided in M2):
 
 - **npm** — versioned packages `@suprui/ui`, `@suprui/ui-native`, `@suprui/tokens`,
-  0.1.0 published 2026-11-14 under `@mrtechnology`; migrating to `@suprui`
-  (D26), publish pending an npm org + token. Install-verified under
-  `@mrtechnology`.
+  version `0.1.0` published under `@suprui` on 2026-11-16. Earlier
+  `@mrtechnology/*` versions have been superseded. Published tarballs
+  and their verified checksums are archived under `backups/npm/`.
 - **Registry** — copy-paste via the shadcn-style registry in
   `registry.json` (23 items; `name: supr-ui`, homepage
   <https://supr.technology>), statically hosted (suggested host

@@ -3,7 +3,7 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "../../lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-rounded font-medium transition-colors duration-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 font-medium transition-colors duration-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -12,6 +12,10 @@ const buttonVariants = cva(
         outline: "border border-border-strong bg-transparent text-text hover:bg-surface",
         ghost: "bg-transparent text-text hover:bg-surface",
         danger: "bg-danger-solid text-brand-foreground hover:bg-danger-hover",
+      },
+      shape: {
+        control: "rounded-rounded",
+        pill: "rounded-circular",
       },
       size: {
         sm: "h-8 px-3 text-sm",
@@ -22,6 +26,7 @@ const buttonVariants = cva(
     defaultVariants: {
       variant: "primary",
       size: "md",
+      shape: "control",
     },
   },
 );
@@ -40,6 +45,7 @@ export interface ButtonProps
 export function Button({
   variant,
   size,
+  shape,
   disabled,
   icon,
   children,
@@ -49,7 +55,7 @@ export function Button({
   return (
     <button
       type="button"
-      className={cn(buttonVariants({ variant, size }), className)}
+      className={cn(buttonVariants({ variant, size, shape }), className)}
       disabled={disabled}
       {...props}
     >

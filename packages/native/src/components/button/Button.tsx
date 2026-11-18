@@ -18,10 +18,13 @@ import { fontWeight, useTheme } from '../../theme';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
 export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonShape = 'control' | 'pill';
 
 export interface ButtonProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  /** Compact controls by default; use pill for site-style calls to action. */
+  shape?: ButtonShape;
   disabled?: boolean;
   children: ReactNode;
   icon?: ReactNode;
@@ -38,6 +41,7 @@ export interface ButtonProps {
 export function Button({
   variant = 'primary',
   size = 'md',
+  shape = 'control',
   disabled = false,
   children,
   icon,
@@ -109,7 +113,7 @@ export function Button({
           height,
           paddingHorizontal: t.spacing[4],
           gap: t.spacing[2],
-          borderRadius: t.radii.rounded,
+          borderRadius: shape === 'pill' ? t.radii.circular : t.radii.rounded,
           borderWidth: t.borderWidth.thin,
           borderColor,
           backgroundColor,
