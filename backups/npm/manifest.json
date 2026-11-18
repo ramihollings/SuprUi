@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "created_utc": "2026-11-18T01:44:32.232221+00:00",
+  "repository": "https://github.com/ramihollings/SuprUi",
+  "registry": "https://registry.npmjs.org/",
+  "packages": [
+    {
+      "name": "@suprui/tokens",
+      "latest": "0.1.0",
+      "registry_last_modified": "2026-11-16T20:39:05.308Z",
+      "releases": [
+        {
+          "version": "0.0.0-stage",
+          "archive": "backups/npm/tokens-0.0.0-stage.tgz",
+          "source_tarball": "https://registry.npmjs.org/@suprui/tokens/-/tokens-0.0.0-stage.tgz",
+          "integrity": "sha512-nHwkVYkXcI17cRrjTYqXSM4Td4pnHVFWDwnrx7eoGB/p4uxI6/DepbNtaPVUFj0wZw7zGb0h603B5kcpSQGJVQ==",
+          "sha1": "aec2752ec1867fae0b22c308003382b09e777991",
+          "bytes": 365,
+          "file_count": 2,
+          "npm_file_count": 2,
+          "tar_entries": 3
+        },
+        {
+          "version": "0.1.0",
+          "archive": "backups/npm/tokens-0.1.0.tgz",
+          "source_tarball": "https://registry.npmjs.org/@suprui/tokens/-/tokens-0.1.0.tgz",
+          "integrity": "sha512-fZx6xes5NqMKz/bSjTa8+TKBM/uLtMKsjJ2Aks1KsWo8aa49spxeZaolsj5/8kotlUD5H3vkDFMnaVseZjNl7g==",
+          "sha1": "1900e8eb9cc2406cdb5443aaccc6955709bca5bc",
+          "bytes": 6461,
+          "file_count": 7,
+          "npm_file_count": 7,
+          "tar_entries": 7
+        }
+      ]
+    },
+    {
+      "name": "@suprui/ui",
+      "latest": "0.1.0",
+      "registry_last_modified": "2026-11-16T20:40:38.507Z",
+      "releases": [
+        {
+          "version": "0.0.0-stage",
+          "archive": "backups/npm/ui-0.0.0-stage.tgz",
+          "source_tarball": "https://registry.npmjs.org/@suprui/ui/-/ui-0.0.0-stage.tgz",
+          "integrity": "sha512-9g7hxwGGZ16afYQDLX/+GezYD5j8AZuV4W4g3qbLOITbEUf6A072GpK9xs9uSeaTW2mKivXuDUBF+X9/ODPCqg==",
+          "sha1": "f5c0af45c662b039fe92428858e0bb724368fb48",
+          "bytes": 362,
+          "file_count": 2,
+          "npm_file_count": 2,
+          "tar_entries": 3
+        },
+        {
+          "version": "0.1.0",
+          "archive": "backups/npm/ui-0.1.0.tgz",
+          "source_tarball": "https://registry.npmjs.org/@suprui/ui/-/ui-0.1.0.tgz",
+          "integrity": "sha512-+WGRw5pibkFyLkwfy1nj4eSYbfY8AmW7/vQvRynXngp9CUhGxKuyVTDwvcIz/jeedn7EWF4bZ4EFm9fNvZ+riA==",
+          "sha1": "866337673c917a87769ae9deb47222620e4e0fa7",
+          "bytes": 10614,
+          "file_count": 29,
+          "npm_file_count": 29,
+          "tar_entries": 29
+        }
+      ]
+    },
+    {
+      "name": "@suprui/ui-native",
+      "latest": "0.1.0",
+      "registry_last_modified": "2026-11-16T20:43:18.135Z",
+      "releases": [
+        {
+          "version": "0.0.0-stage",
+          "archive": "backups/npm/ui-native-0.0.0-stage.tgz",
+          "source_tarball": "https://registry.npmjs.org/@suprui/ui-native/-/ui-native-0.0.0-stage.tgz",
+          "integrity": "sha512-rzu9HqAhusx3Q3Rybih8HGZ/7ltZwf7TbSvX/0HTDb9cyD0iYt/WfKXovMm+teCQkPrVlEMTdKoH0fln4p7GjA==",
+          "sha1": "a605e8dcd1b1885c5ac9765f1a9c9f4dd32f2df3",
+          "bytes": 367,
+          "file_count": 2,
+          "npm_file_count": 2,
+          "tar_entries": 3
+        },
+        {
+          "version": "0.1.0",
+          "archive": "backups/npm/ui-native-0.1.0.tgz",
+          "source_tarball": "https://registry.npmjs.org/@suprui/ui-native/-/ui-native-0.1.0.tgz",
+          "integrity": "sha512-Wx3IJ8C6qhHsNosd3e9p3foTiK4gcCdmq2KmLap66nIchPuEW0TtxbGQZEyLWZPctG3PIDJaDEq8LwhV63ZvRg==",
+          "sha1": "82a601c65b95e76a31828a04982b12c4b372e29e",
+          "bytes": 18133,
+          "file_count": 28,
+          "npm_file_count": 28,
+          "tar_entries": 28
+        }
+      ]
+    }
+  ]
+}
